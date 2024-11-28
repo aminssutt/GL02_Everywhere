@@ -1,0 +1,16 @@
+START_CRU-donnee
+nom_cours = Mathématiques
+code_cours = MT01
+date = 2024-11-28
+plage_horaire = 08:00-10:00
+nom_salle = A001
+capacite = 50
+batiment = A
+END_CRU-donee
+
+START_donnees_salle
+nom_salle=A001
+capacite=50
+batiment=A
+disponibilite=10:00-12:00
+END_donnees_salle
