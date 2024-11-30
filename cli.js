@@ -1,6 +1,7 @@
 const fs = require("fs");
 const colors = require("colors");
-const parser = require("./parser.js");
+// const parser = require("./parser.js");
+const { parser, check, parse, toCourse } = require("./parser");
 
 const vg = require("vega");
 const vegalite = require("vega-lite");
@@ -20,14 +21,15 @@ cli
         return logger.warn(err);
       }
 
-      var analyzer = new Parser();
-      analyzer.parse(data);
+      // var analyzer = new Parser();
+      let info = parse(data);
+      console.log(info);
 
-      if (analyzer.errorCount === 0) {
-        logger.info("The file is a valid file".green);
-      } else {
-        logger.info("The .cru file contains error".red);
-      }
+      // if (analyzer.errorCount === 0) {
+      //   logger.info("The file is a valid file".green);
+      // } else {
+      //   logger.info("The .cru file contains error".red);
+      // }
 
       //   logger.debug(analyzer.parsedPOI);
     });
