@@ -4,6 +4,7 @@ const parser = require("./parser.js");
 
 const vg = require("vega");
 const vegalite = require("vega-lite");
+const { error } = require("console");
 
 const cli = require("@caporal/core").default;
 
@@ -13,10 +14,6 @@ cli
   // check Data File
   .command("check", "Check if <file> is a valid data file")
   .argument("<file>", "The file to check with Vpf parser")
-  //   .option("-s, --showSymbols", "log the analyzed symbol at each step", {
-  //     validator: cli.BOOLEAN,
-  //     default: false,
-  //   })
   .action(({ args, options, logger }) => {
     fs.readFile(args.file, "utf8", function (err, data) {
       if (err) {
@@ -29,37 +26,17 @@ cli
       if (analyzer.errorCount === 0) {
         logger.info("The file is a valid file".green);
       } else {
-        logger.info("The file contains error".red);
+        logger.info("The .cru file contains error".red);
       }
 
       //   logger.debug(analyzer.parsedPOI);
     });
   })
 
-  // load data on .txts files (maybe will not be used)
-  .command("import", "Load a valid data <file>")
-  .argument("<file>", "The file to load")
-  .action(({ args, options, logger }) => {
-    fs.readFile(args.file, "utf8", function (err, data) {
-      if (err) {
-        return logger.warn(err);
-      }
-
-      var analyzer = new Parser();
-      analyzer.load(data);
-
-      if (analyzer.errorCount === 0) {
-        logger.info("CRU file loaded into the system".green);
-      } else {
-        logger.info("The file contains error".red);
-      }
-    });
-  })
-
-  // search rooms being used given a course
+  // SPEC_1 search rooms being used given a course
   .command("recherche-salle", "Free text search on rooms given a course's name")
   .argument("<file>", "The data file to search")
-  .argument("<course>", "The text to look for in courses' names")
+  .argument("<cours>", "The text to look for in courses' names")
   .action(({ args, options, logger }) => {
     fs.readFile(args.file, "utf8", function (err, data) {
       if (err) {
@@ -69,26 +46,36 @@ cli
       analyzer = new Parser();
       analyzer.parse(data);
 
-      if (analyzer.errorCount === 0) {
-        var n = new RegExp(args.course);
-        var filtered = analyzer.parsedData.filter((p) => p.name.match(n, "i"));
-        // get room's infos
-        // salles associées au cours demandé, avec la capacité d'accueil de chaque salle (nom de la salle, capacité, bâtiment)
+      // test
+      // var jsonData = JSON.parse(data);
+      // var analyzer = { errorCount: 0, parsedData: jsonData };
 
-        var info = [
-          { salle: filtered.roomsName, capacite: filtered.capacity },
-          { salle: filtered.roomsName, capacite: filtered.capacity },
-          //...
-        ];
+      if (analyzer.errorCount === 0) {
+        var n = new RegExp(args.cours);
+        var filtered = analyzer.parsedData.filter((p) =>
+          p.course.match(n, "i")
+        );
+
+        var info = filtered[0].classes.map((item) => {
+          console.log(item);
+
+          let f = {
+            nom_salle: item.room,
+            capacite: item.capacity,
+            batiment: item.room.charAt(0),
+          };
+
+          return f;
+        });
 
         logger.info("%s", JSON.stringify(info, null, 2));
       } else {
-        logger.info("The file contains error".red);
+        logger.info("The .cru file contains error".red);
       }
     });
   })
 
-  // show rooms' capacity given a room name
+  // SPEC_2 show rooms' capacity given a room name
   .command(
     "capacite-salle",
     "Free text search on room's capacity given its name"
@@ -104,26 +91,32 @@ cli
       analyzer = new Parser();
       analyzer.parse(data);
 
+      // // test
+      // var jsonData = JSON.parse(data);
+      // var analyzer = { errorCount: 0, parsedData: jsonData };
+
       if (analyzer.errorCount === 0) {
-        var n = new RegExp(args.course);
-        var filtered = analyzer.parsedData.filter((p) => p.name.match(n, "i"));
-        // get room's infos
-        // L'utilisateur reçoit une réponse avec le nom de la salle et sa capacité d'accueil (nombre de places).
+        var n = new RegExp(args.room);
+        var filtered = analyzer.parsedData
+          .flatMap((p) => p.classes)
+          .find((item) => item.room.match(n));
 
-        var info = {
-          salle: filtered.roomName,
-          capacite: filtered.capacity,
-        };
+        if (filtered) {
+          var result = {
+            nom_salle: filtered.room,
+            capacite: filtered.capacity,
+          };
+        }
 
-        logger.info("%s", JSON.stringify(info, null, 2));
+        logger.info("%s", JSON.stringify(result, null, 2));
       } else {
-        logger.info("The .vpf file contains error".red);
+        logger.info("The .cru file contains error".red);
       }
     });
   })
 
-  // show if room is available a day and a timeslot
-  .command("disponibilité-salle", "Check room's availability given its name")
+  // SPEC_3 show if room is available a day and a timeslot
+  .command("disponibilite-salle", "Check room's availability given its name")
   .argument("<file>", "The data file to search")
   .argument("<room>", "The text to look for in rooms' names")
   .action(({ args, options, logger }) => {
@@ -135,30 +128,63 @@ cli
       analyzer = new Parser();
       analyzer.parse(data);
 
+      // var jsonData = JSON.parse(data);
+      // var analyzer = { errorCount: 0, parsedData: jsonData };
+
       if (analyzer.errorCount === 0) {
-        var n = new RegExp(args.course);
-        var filtered = analyzer.parsedData.filter((p) => p.name.match(n, "i"));
-        // Check availability
-        // L'utilisateur souhaite connaître les créneaux horaires disponibles d'une salle donnée sur une semaine.
-        // L'utilisateur reçoit la liste des créneaux horaires disponibles de la salle sur une semaine sous forme de tableau (jour, créneau horaire).
-        // Get all available timeslots from the actual day + 7 days
+        var n = new RegExp(args.room);
+        var filtered = analyzer.parsedData
+          .flatMap((p) => p.classes)
+          .filter((p) => p.room.match(n, "i"));
 
-        var info = [
-          { jour: filtered.date, availability: filtered.availability },
-          { jour: filtered.date, availability: filtered.availability },
-          //...
-        ];
+        days = ["L", "MA", "ME", "J", "V", "S", "D"];
 
-        // diplay as table
+        var ans = days.forEach((day) => {
+          let todayClasses = filtered.filter((item) => item.weekday === day);
+          var availability = [];
 
-        logger.info("%s", JSON.stringify(info, null, 2));
+          if (todayClasses.length > 0) {
+            todayClasses = todayClasses.sort((a, b) => {
+              if (a.startTime < b.startTime) return -1;
+              if (a.startTime > b.startTime) return 1;
+              return 0;
+            });
+
+            for (let i = 0; i < todayClasses.length; i++) {
+              if (i === 0 && !(todayClasses[i].startTime === "08:00")) {
+                let slot = "08:00-" + todayClasses[i].startTime;
+                availability.push(slot);
+              }
+
+              if (
+                todayClasses[i + 1] &&
+                todayClasses[i].endTime < "20:00" &&
+                todayClasses[i].endTime !== todayClasses[i + 1].startTime
+              ) {
+                let slot =
+                  todayClasses[i].endTime + "-" + todayClasses[i + 1].startTime;
+                availability.push(slot);
+              }
+
+              if (!todayClasses[i + 1] && todayClasses[i].endTime < "20:00") {
+                let slot = todayClasses[i].endTime + "-20:00";
+                availability.push(slot);
+              }
+            }
+          } else {
+            availability.push("08:00-20:00");
+          }
+
+          // console.log(`${day}: ` + availability);
+          logger.info(`${day}: %s`, JSON.stringify(availability, null, 2));
+        });
       } else {
         logger.info("The .vpf file contains error".red);
       }
     });
   })
 
-  // show if room's available given a timeslot
+  // SPEC_4 show if room's available given a timeslot
   .command("salles-disponibles", "Check rooms available given a timeslot")
   .argument("<file>", "The data file to search")
   .argument("<room>", "The text to look for in rooms' names")
@@ -197,7 +223,7 @@ cli
     });
   })
 
-  // export iCalendar
+  // SPEC_5 export iCalendar
   .command("generer-icalendar", "Generate iCalendar file for a period")
   .argument("<file>", "The data file to search")
   .argument("<date_debut>", "Start of the searched period in format YYYY-MM-DD")
@@ -238,24 +264,23 @@ cli
     });
   })
 
-  // average with chart
+  // SPEC_6 generate chart
   .command(
-    "averageChart",
+    "taux-occupation",
     "Compute the average note of each POI and export a Vega-lite chart"
   )
-  .alias("avgChart")
-  .argument("<file>", "The Vpf file to use")
+  .argument("<file>", "The data file to use")
   .action(({ args, options, logger }) => {
     fs.readFile(args.file, "utf8", function (err, data) {
       if (err) {
         return logger.warn(err);
       }
 
-      analyzer = new VpfParser();
+      analyzer = new Parser();
       analyzer.parse(data);
 
       if (analyzer.errorCount === 0) {
-        var avg = analyzer.parsedPOI.map((p) => {
+        var avg = analyzer.parsedData.map((p) => {
           var m = 0;
           // compute the average for each POI
           if (p.ratings.length > 0) {
@@ -320,15 +345,16 @@ cli
   })
 
   // abc
-  .command("abc", "Organize POI in an Object grouped by name")
-  .argument("<file>", "The Vpf file to group by")
+  .command("classement-salles", "Organize rooms in an an array ordered by size")
+  .argument("<file>", "The .cru file to group by")
+  .argument("<ordre>", "The type of order")
   .action(({ args, options, logger }) => {
     fs.readFile(args.file, "utf8", function (err, data) {
       if (err) {
         return logger.warn(err);
       }
 
-      analyzer = new VpfParser();
+      analyzer = new Parser();
       analyzer.parse(data);
 
       if (analyzer.errorCount === 0) {

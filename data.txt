@@ -1,16 +1,62 @@
-START_CRU-donnee
-nom_cours = Mathématiques
-code_cours = MT01
-date = 2024-11-28
-plage_horaire = 08:00-10:00
-nom_salle = A001
-capacite = 50
-batiment = A
-END_CRU-donee
-
-START_donnees_salle
-nom_salle=A001
-capacite=50
-batiment=A
-disponibilite=10:00-12:00
-END_donnees_salle
+[
+  {
+    "course": "MC01",
+    "classes": [
+      {
+        "idk": 1,
+        "type": "C1",
+        "capacity": 24,
+        "weekday": "V",
+        "startTime": "10:00",
+        "endTime": "12:00",
+        "subGroup": "F1",
+        "room": "P201"
+      },
+      {
+        "idk": 1,
+        "type": "T1",
+        "capacity": 24,
+        "weekday": "V",
+        "startTime": "16:00",
+        "endTime": "18:00",
+        "subGroup": "F2",
+        "room": "EXT1"
+      }
+    ]
+  },
+  {
+    "course": "MC02",
+    "classes": [
+      {
+        "idk": 1,
+        "type": "C1",
+        "capacity": 24,
+        "weekday": "V",
+        "startTime": "10:00",
+        "endTime": "12:00",
+        "subGroup": "F1",
+        "room": "P202"
+      },
+      {
+        "idk": 1,
+        "type": "T1",
+        "capacity": 24,
+        "weekday": "V",
+        "startTime": "13:00",
+        "endTime": "16:00",
+        "subGroup": "F2",
+        "room": "EXT1"
+      },
+      {
+        "idk": 1,
+        "type": "T1",
+        "capacity": 24,
+        "weekday": "V",
+        "startTime": "08:01",
+        "endTime": "09:00",
+        "subGroup": "F2",
+        "room": "EXT1"
+      }
+    ]
+  }
+]
