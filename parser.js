@@ -69,3 +69,4 @@ let toCourse = function(courseStr){
     return course;
 }
 
+module.exports = { parser, check, parse, toCourse };
