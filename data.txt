@@ -1,0 +1,62 @@
+[
+  {
+    "course": "MC01",
+    "classes": [
+      {
+        "idk": 1,
+        "type": "C1",
+        "capacity": 24,
+        "weekday": "V",
+        "startTime": "10:00",
+        "endTime": "12:00",
+        "subGroup": "F1",
+        "room": "P201"
+      },
+      {
+        "idk": 1,
+        "type": "T1",
+        "capacity": 24,
+        "weekday": "V",
+        "startTime": "16:00",
+        "endTime": "18:00",
+        "subGroup": "F2",
+        "room": "EXT1"
+      }
+    ]
+  },
+  {
+    "course": "MC02",
+    "classes": [
+      {
+        "idk": 1,
+        "type": "C1",
+        "capacity": 24,
+        "weekday": "V",
+        "startTime": "10:00",
+        "endTime": "12:00",
+        "subGroup": "F1",
+        "room": "P202"
+      },
+      {
+        "idk": 1,
+        "type": "T1",
+        "capacity": 24,
+        "weekday": "V",
+        "startTime": "13:00",
+        "endTime": "16:00",
+        "subGroup": "F2",
+        "room": "EXT1"
+      },
+      {
+        "idk": 1,
+        "type": "T1",
+        "capacity": 24,
+        "weekday": "V",
+        "startTime": "08:01",
+        "endTime": "09:00",
+        "subGroup": "F2",
+        "room": "EXT1"
+      }
+    ]
+  }
+]
