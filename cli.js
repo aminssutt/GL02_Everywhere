@@ -1,11 +1,12 @@
 const fs = require("fs");
 const colors = require("colors");
-// const parser = require("./parser.js");
-const { parser, check, parse, toCourse } = require("./parser");
+const Parser = require("./parser.js");
+// const { parser, check, parse, toCourse, availability } = require("./parser");
 
 const vg = require("vega");
 const vegalite = require("vega-lite");
 const { error } = require("console");
+const { start } = require("repl");
 
 const cli = require("@caporal/core").default;
 
@@ -21,8 +22,8 @@ cli
         return logger.warn(err);
       }
 
-      // var analyzer = new Parser();
-      let info = parse(data);
+      var analyzer = new Parser();
+      let info = analyzer.parse(data);
       console.log(info);
 
       // if (analyzer.errorCount === 0) {
@@ -45,30 +46,16 @@ cli
         return logger.warn(err);
       }
 
-      analyzer = new Parser();
-      analyzer.parse(data);
+      let parser = new Parser();
+      // analyzer.parse(data);
 
       // test
-      // var jsonData = JSON.parse(data);
-      // var analyzer = { errorCount: 0, parsedData: jsonData };
+      var jsonData = JSON.parse(data);
+      var analyzer = { errorCount: 0, parsedData: jsonData };
 
       if (analyzer.errorCount === 0) {
         var n = new RegExp(args.cours);
-        var filtered = analyzer.parsedData.filter((p) =>
-          p.course.match(n, "i")
-        );
-
-        var info = filtered[0].classes.map((item) => {
-          console.log(item);
-
-          let f = {
-            nom_salle: item.room,
-            capacite: item.capacity,
-            batiment: item.room.charAt(0),
-          };
-
-          return f;
-        });
+        var info = parser.searchRoomByCourse(analyzer.parsedData, n);
 
         logger.info("%s", JSON.stringify(info, null, 2));
       } else {
@@ -127,59 +114,17 @@ cli
         return logger.warn(err);
       }
 
-      analyzer = new Parser();
-      analyzer.parse(data);
+      let parser = new Parser();
+      // analyzer = new Parser();
+      // analyzer.parse(data);
 
-      // var jsonData = JSON.parse(data);
-      // var analyzer = { errorCount: 0, parsedData: jsonData };
+      var jsonData = JSON.parse(data);
+      var analyzer = { errorCount: 0, parsedData: jsonData };
 
       if (analyzer.errorCount === 0) {
         var n = new RegExp(args.room);
-        var filtered = analyzer.parsedData
-          .flatMap((p) => p.classes)
-          .filter((p) => p.room.match(n, "i"));
-
-        days = ["L", "MA", "ME", "J", "V", "S", "D"];
-
-        var ans = days.forEach((day) => {
-          let todayClasses = filtered.filter((item) => item.weekday === day);
-          var availability = [];
-
-          if (todayClasses.length > 0) {
-            todayClasses = todayClasses.sort((a, b) => {
-              if (a.startTime < b.startTime) return -1;
-              if (a.startTime > b.startTime) return 1;
-              return 0;
-            });
-
-            for (let i = 0; i < todayClasses.length; i++) {
-              if (i === 0 && !(todayClasses[i].startTime === "08:00")) {
-                let slot = "08:00-" + todayClasses[i].startTime;
-                availability.push(slot);
-              }
-
-              if (
-                todayClasses[i + 1] &&
-                todayClasses[i].endTime < "20:00" &&
-                todayClasses[i].endTime !== todayClasses[i + 1].startTime
-              ) {
-                let slot =
-                  todayClasses[i].endTime + "-" + todayClasses[i + 1].startTime;
-                availability.push(slot);
-              }
-
-              if (!todayClasses[i + 1] && todayClasses[i].endTime < "20:00") {
-                let slot = todayClasses[i].endTime + "-20:00";
-                availability.push(slot);
-              }
-            }
-          } else {
-            availability.push("08:00-20:00");
-          }
-
-          // console.log(`${day}: ` + availability);
-          logger.info(`${day}: %s`, JSON.stringify(availability, null, 2));
-        });
+        info = parser.availability(analyzer.parsedData, n);
+        logger.info(`%s`, JSON.stringify(info, null, 2));
       } else {
         logger.info("The .vpf file contains error".red);
       }
@@ -189,38 +134,55 @@ cli
   // SPEC_4 show if room's available given a timeslot
   .command("salles-disponibles", "Check rooms available given a timeslot")
   .argument("<file>", "The data file to search")
-  .argument("<room>", "The text to look for in rooms' names")
+  .argument("<slot>", "The timeslot searched for availability")
   .action(({ args, options, logger }) => {
     fs.readFile(args.file, "utf8", function (err, data) {
       if (err) {
         return logger.warn(err);
       }
 
-      analyzer = new Parser();
-      analyzer.parse(data);
+      var parser = new Parser();
+      // analyzer = new Parser();
+      // analyzer.parse(data);
+
+      //test
+      var jsonData = JSON.parse(data);
+      var analyzer = { errorCount: 0, parsedData: jsonData };
 
       if (analyzer.errorCount === 0) {
-        var n = new RegExp(args.course);
-        var filtered = analyzer.parsedData.filter((p) => p.name.match(n, "i"));
-        // Check which rooms are available in a specific timeslot; since there's no date, use the current day
-        // L'utilisateur reçoit la liste des salles disponibles pour l'horaire donné, sous forme de tableau avec nom de la salle, capacité et bâtiment.
+        var startSlot = args.slot.substring(0, 5);
+        var endSlot = args.slot.substring(6, 11);
+        var roomsAvaliable = [];
 
-        var info = [
-          {
-            name: filtered.roomName,
-            capacite: filtered.roomCapacity,
-            batiment: filtered.roomBatiment,
-          },
-          {
-            name: filtered.roomName,
-            capacite: filtered.roomCapacity,
-            batiment: filtered.roomBatiment,
-          },
-        ];
+        // all rooms names
+        var allRooms = new Set(analyzer.parsedData.flatMap((item) => item.classes).map((item) => item.room));
+        allRooms = [...allRooms];
 
-        logger.info("%s", JSON.stringify(info, null, 2));
+        allRooms.forEach((room) => {
+          let avb = parser.availability(analyzer.parsedData, new RegExp(room));
+
+          // check avaliability for each room
+          for (let key in avb) {
+            for (index in avb[key]) {
+              let str = avb[key][index];
+              if (str.substring(0, 5) <= startSlot && str.substring(6, 11) >= endSlot) {
+                // if available, put in a response all desired data in json format
+                roomsAvaliable.push({jour: key, salle: parser.searchRoomByName(analyzer.parsedData, room)})
+              }
+            }
+          }
+        });
+        
+        // format to delete duplicates
+        roomsAvaliable = roomsAvaliable.reduce((acc, { jour, salle }) => {
+          if (!acc[jour]) acc[jour] = [];
+          if (!acc[jour].includes(salle)) acc[jour].push(salle);
+          return acc;
+        }, {});
+
+        logger.info("%s", JSON.stringify(roomsAvaliable, null, 2));
       } else {
-        logger.info("The .vpf file contains error".red);
+        logger.info("The .cru file contains error".red);
       }
     });
   })
@@ -237,31 +199,62 @@ cli
         return logger.warn(err);
       }
 
-      analyzer = new Parser();
-      analyzer.parse(data);
+      const parser = new Parser();
+      // analyzer = new Parser();
+      // analyzer.parse(data);
+
+      //test
+      var jsonData = JSON.parse(data);
+      var analyzer = { errorCount: 0, parsedData: jsonData };
 
       if (analyzer.errorCount === 0) {
-        var n = new RegExp(args.course);
-        var filtered = analyzer.parsedData.filter((p) => p.name.match(n, "i"));
-        //
-        // L'utilisateur reçoit la liste des salles disponibles pour l'horaire donné, sous forme de tableau avec nom de la salle, capacité et bâtiment.
+        const dates = parser.getDatesBetween(args.dateDebut, args.dateFin);
 
-        var info = [
-          {
-            name: filtered.roomName,
-            capacite: filtered.roomCapacity,
-            batiment: filtered.roomBatiment,
-          },
-          {
-            name: filtered.roomName,
-            capacite: filtered.roomCapacity,
-            batiment: filtered.roomBatiment,
-          },
-        ];
+        const courseData = jsonData.find((item) => item.course === args.cours);
+        if (!courseData) {
+          console.warn(`Course ${args.cours} not found.`);
+          return;
+        }
 
-        logger.info("%s", JSON.stringify(info, null, 2));
+        const classes = courseData.classes;
+        const icalData = [];
+
+        dates.forEach((date) => {
+          classes.forEach((cls) => {
+            // Create event for each class
+            if (parser.checkWeekday(date, cls.weekday)){
+              const event = `BEGIN:VEVENT
+              SUMMARY:${args.cours} ${cls.type} (${cls.subGroup})
+              DTSTART;TZID=Europe/Paris:${parser.formatDateTime(date, cls.startTime)}
+              DTEND;TZID=Europe/Paris:${parser.formatDateTime(date, cls.endTime)}
+              RRULE:FREQ=WEEKLY;BYDAY=${parser.convertWeekday(cls.weekday)}
+              LOCATION:${cls.room}
+              DESCRIPTION: Group ${cls.subGroup}
+              END:VEVENT`;
+              icalData.push(event);
+            }
+          });
+        })
+
+        // iCalendar file content
+        const icalContent = `BEGIN:VCALENDAR
+        VERSION:2.0
+        PRODID:
+        ${icalData.join("\n")}
+        END:VCALENDAR`;
+        
+        const outputFileName = `calendar.ics`;
+        fs.writeFile(outputFileName, icalContent, (writeErr) => {
+          if (writeErr) {
+            console.warn("Error writing iCalendar file:", writeErr);
+            return;
+          }
+          console.log(`iCalendar file generated: ${outputFileName}`);
+        });
+
+        // logger.info("%s", JSON.stringify(info, null, 2));
       } else {
-        logger.info("The .vpf file contains error".red);
+        // logger.info("The .vpf file contains error".red);
       }
     });
   })
@@ -278,75 +271,62 @@ cli
         return logger.warn(err);
       }
 
-      analyzer = new Parser();
-      analyzer.parse(data);
+      // analyzer = new Parser();
+      // analyzer.parse(data);
+
+      const parser = new Parser();
+      var jsonData = JSON.parse(data);
+      var analyzer = { errorCount: 0, parsedData: jsonData };
 
       if (analyzer.errorCount === 0) {
-        var avg = analyzer.parsedData.map((p) => {
-          var m = 0;
-          // compute the average for each POI
-          if (p.ratings.length > 0) {
-            m =
-              p.ratings.reduce((acc, elt) => acc + parseInt(elt), 0) /
-              p.ratings.length;
-          }
-          p["averageRatings"] = m;
-          return p;
-        });
+        var allRooms = new Set(analyzer.parsedData.flatMap((item) => item.classes).map((item) => item.room));
+        allRooms = [...allRooms];
+        var chartData = [];
 
-        var avgChart = {
-          //"width": 320,
-          //"height": 460,
+        allRooms.forEach((item) => {
+          chartData.push(parser.occupationRate(analyzer.parsedData, item))
+        })
+
+        var pieChart = {
           data: {
-            values: avg,
+            values: chartData,
           },
-          mark: "bar",
+          mark: "arc",
           encoding: {
-            x: {
-              field: "name",
-              type: "nominal",
-              axis: { title: "Restaurants' name." },
-            },
-            y: {
-              field: "averageRatings",
+            theta: {
+              field: "occupation",
               type: "quantitative",
-              axis: { title: "Average ratings for " + args.file + "." },
+              stack: true,
+              axis: { title: "Occupations" },
+            },
+            color: {
+              field: "nom_salle",
+              type: "nominal",
+              legend: { title: "Rooms" },
             },
           },
         };
-
-        const myChart = vegalite.compile(avgChart).spec;
-
+        
+        const chart = vegalite.compile(pieChart).spec;
+        
         /* SVG version */
-        var runtime = vg.parse(myChart);
+        var runtime = vg.parse(chart);
         var view = new vg.View(runtime).renderer("svg").run();
         var mySvg = view.toSVG();
         mySvg.then(function (res) {
-          fs.writeFileSync("./result.svg", res);
+          fs.writeFileSync("./pie_chart.svg", res);
           view.finalize();
-          logger.info("%s", JSON.stringify(myChart, null, 2));
-          logger.info("Chart output : ./result.svg");
+          logger.info("%s", JSON.stringify(chart, null, 2));
+          logger.info("Pie chart output : ./pie_chart.svg");
         });
 
-        /* Canvas version */
-        /*
-			var runtime = vg.parse(myChart);
-			var view = new vg.View(runtime).renderer('canvas').background("#FFF").run();
-			var myCanvas = view.toCanvas();
-			myCanvas.then(function(res){
-				fs.writeFileSync("./result.png", res.toBuffer());
-				view.finalize();
-				logger.info(myChart);
-				logger.info("Chart output : ./result.png");
-			})			
-			*/
       } else {
-        logger.info("The .vpf file contains error".red);
+        // logger.info("The .vpf file contains error".red);
       }
     });
   })
 
-  // abc
+  // Sort class by its size
   .command("classement-salles", "Organize rooms in an an array ordered by size")
   .argument("<file>", "The .cru file to group by")
   .argument("<ordre>", "The type of order")
@@ -356,23 +336,30 @@ cli
         return logger.warn(err);
       }
 
-      analyzer = new Parser();
-      analyzer.parse(data);
+      // analyzer = new Parser();
+      // analyzer.parse(data);
+
+      // const parser = new Parser();
+      var jsonData = JSON.parse(data);
+      var analyzer = { errorCount: 0, parsedData: jsonData };
+
 
       if (analyzer.errorCount === 0) {
-        var abc = analyzer.parsedPOI.reduce(function (acc, elt) {
-          var idx = elt.name.charAt(0);
-          if (acc[idx]) {
-            acc[idx].push(elt);
-          } else {
-            acc[idx] = [elt];
-          }
-          return acc;
-        }, {});
+        var allRooms = Array.from(
+          new Set(analyzer.parsedData
+            .flatMap((item) => item.classes)
+            .map((item) => JSON.stringify({ nom_salle: item.room, capacite: item.capacity })))
+        ).map((item) => JSON.parse(item));
 
-        logger.info("%s", JSON.stringify(abc, null, 2));
+        if (args.ordre.includes("des")){
+          allRooms = allRooms.sort((a, b) => b.capacite - a.capacite);
+        }else{
+          allRooms = allRooms.sort((a, b) => a.capacite - b.capacite);
+        }
+
+        logger.info("%s", JSON.stringify(allRooms, null, 2));
       } else {
-        logger.info("The .vpf file contains error".red);
+        logger.info("The .cru file contains error".red);
       }
     });
   });
