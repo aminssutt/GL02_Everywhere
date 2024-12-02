@@ -1,3 +1,6 @@
+const ClasseDTO = require("./classeDTO");
+const CourseDTO = require("./courseDTO");
+
 /** Example of file parsed
 +MC01
 1,C1,P=24,H=J 10:00-12:00,F1,S=P202//
@@ -13,10 +16,12 @@
 1,C1,P=62,H=ME 12:00-16:00,F1,S=B101//
 1,D1,P=64,H=ME 16:00-20:00,F1,S=B101//
  */
+
 class Parser{
     constructor(){
-        this.symb = ["P=", "H=", "S="]
-        this.regex = `/^(?:\+\w{2}\d{2}$(?:\r?\n|$)|\d,[A-Z]\d,P=\d+,H=(L|MA|ME|J|V|S|D) (\d|1\d|2[0-3]):[0-5]\d-(0\d|1\d|2[0-3]):[0-5]\d,[A-Z]\d,S=\w+\/\/$(?:\r?\n|$))+/gm`
+        this.symb = ["P=", "H=", "S=", "//"]
+        this.regex = /^(?:\+\w{2}\d{2}$(?:\r?\n|$)|\d,[A-Z]\d,P=\d+,H=(L|MA|ME|J|V|S|D) (\d|1\d|2[0-3]):[0-5]\d-(0\d|1\d|2[0-3]):[0-5]\d,[A-Z]\d,S=\w+\/\/$(?:\r?\n|$))+/gm
+        this.parseddata = []
     }
     
     /**
@@ -25,20 +30,22 @@ class Parser{
      * @returns 
      */
     check(data){
-        return parser.regex.test(data);
+        return this.regex.test(data);
     }
     /**
      * parse the data from a string to an array of objects
-     * @param {*} data 
+     * @param {string} data 
      * @returns 
      */
     parse(data){
-        check(data);
+        this.check(data);
+        //data = this.deleteComment(data);
         let coursesStr = data.split('+')
         let courses = [];
-        for (let i=0; i<=coursesStr.length; i++){
-            course = toCourse(coursesStr[0]);
-            courses.add(course);
+        for (let i=0; i<=coursesStr.length-1; i++){
+            let course = this.toCourse(coursesStr[i]);
+            console.log(course)
+            courses.push(course);
         }
         return courses;
     }
@@ -48,12 +55,12 @@ class Parser{
      * @param {string} courseStr :string of a course 
      */
     toCourse(courseStr){
-        let course; //a course and an array of classes
+        let course = new CourseDTO(); //a course and an array of classes
         let lines = courseStr.split('\r\n')
         course.course = lines[0]
-        let classe //to put information about a class in a variable
-        for (let i = 0; i<=lines.length; i++){
-            lines[i] = lines[i].split('').filter((val, idx) => !val.match(parser.symb)).join('')
+        for (let i = 1; i<lines.length-1; i++){
+            let classe = new ClasseDTO() //to put information about the class in a variable
+            lines[i] = lines[i].split('').filter((val, idx) => !val.match(this.symb)).join('')
             let elements = lines[i].split(',');
             classe.id = elements[0];
             classe.type = elements[1]
@@ -65,10 +72,44 @@ class Parser{
             classe.endtime = hours[1]
             classe.subgroup = elements[4]
             classe.room = elements[5]
-            course.classe.add(classe) 
+            course.classes.push(classe) 
         }
         return course;
     }
+
+    /**
+     * Delete the useless row of the file
+     * @param {*} data 
+     * @returns 
+     */
+    deleteComment(data){
+        let dataArray = data.split('')
+        let counterPlus = 0
+        let indexDelete= -1;
+        for (let i = 0; i<=dataArray.length;i++){
+            if (dataArray[i]==='+'){
+                counterPlus += 1
+                if (counterPlus ===2){
+                    indexDelete = i
+                }
+            }
+        }
+        let withoutStartComment = dataArray.slice(indexDelete, dataArray.length).join('')
+        let searchEndArray = withoutStartComment.split('\r\n')
+        let toDelete=[];
+        for (let i = 0; i<searchEndArray.length; i++){
+            if (searchEndArray[i]===''){
+                toDelete.push(i)
+            }
+        }
+        for (let i= toDelete.length ; i>=0; i--){
+            searchEndArray.splice(toDelete[i], 1)
+        }
+        //searchEndArray.pop()
+        let withoutEndComment = searchEndArray.join('\r\n')
+        return withoutEndComment
+        //ca supprime la premiere ligne, et ca me laisse des espaces en bas
+    }
 }
-module.exports = { parser, check, parse, toCourse };
+module.exports = Parser;
 

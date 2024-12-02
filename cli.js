@@ -1,7 +1,7 @@
 const fs = require("fs");
 const colors = require("colors");
-// const parser = require("./parser.js");
-const { parser, check, parse, toCourse } = require("./parser");
+const Parser = require("./parser.js");
+//const { parser, check, parse, toCourse } = require("./parser");
 
 const vg = require("vega");
 const vegalite = require("vega-lite");
@@ -21,9 +21,9 @@ cli
         return logger.warn(err);
       }
 
-      // var analyzer = new Parser();
-      let info = parse(data);
-      console.log(info);
+      var analyzer = new Parser();
+      let info = analyzer.parse(data);
+      console.log(JSON.stringify(info));
 
       // if (analyzer.errorCount === 0) {
       //   logger.info("The file is a valid file".green);
