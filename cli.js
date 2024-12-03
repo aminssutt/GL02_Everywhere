@@ -1,6 +1,7 @@
 const fs = require("fs");
 const colors = require("colors");
 const Parser = require("./parser.js");
+const Service = require("./service.js");
 // const { parser, check, parse, toCourse, availability } = require("./parser");
 
 const vg = require("vega");
@@ -46,7 +47,7 @@ cli
         return logger.warn(err);
       }
 
-      let parser = new Parser();
+      let service = new Service();
       // analyzer.parse(data);
 
       // test
@@ -55,7 +56,7 @@ cli
 
       if (analyzer.errorCount === 0) {
         var n = new RegExp(args.cours);
-        var info = parser.searchRoomByCourse(analyzer.parsedData, n);
+        var info = service.searchRoomByCourse(analyzer.parsedData, n);
 
         logger.info("%s", JSON.stringify(info, null, 2));
       } else {
@@ -114,7 +115,8 @@ cli
         return logger.warn(err);
       }
 
-      let parser = new Parser();
+      // let parser = new Parser();
+      let service = new Service();
       // analyzer = new Parser();
       // analyzer.parse(data);
 
@@ -123,7 +125,7 @@ cli
 
       if (analyzer.errorCount === 0) {
         var n = new RegExp(args.room);
-        info = parser.availability(analyzer.parsedData, n);
+        info = service.availability(analyzer.parsedData, n);
         logger.info(`%s`, JSON.stringify(info, null, 2));
       } else {
         logger.info("The .vpf file contains error".red);
@@ -141,7 +143,8 @@ cli
         return logger.warn(err);
       }
 
-      var parser = new Parser();
+      // var parser = new Parser();
+      const service = new Service();
       // analyzer = new Parser();
       // analyzer.parse(data);
 
@@ -159,7 +162,7 @@ cli
         allRooms = [...allRooms];
 
         allRooms.forEach((room) => {
-          let avb = parser.availability(analyzer.parsedData, new RegExp(room));
+          let avb = service.availability(analyzer.parsedData, new RegExp(room));
 
           // check avaliability for each room
           for (let key in avb) {
@@ -167,7 +170,7 @@ cli
               let str = avb[key][index];
               if (str.substring(0, 5) <= startSlot && str.substring(6, 11) >= endSlot) {
                 // if available, put in a response all desired data in json format
-                roomsAvaliable.push({jour: key, salle: parser.searchRoomByName(analyzer.parsedData, room)})
+                roomsAvaliable.push({jour: key, salle: service.searchRoomByName(analyzer.parsedData, room)})
               }
             }
           }
@@ -199,7 +202,8 @@ cli
         return logger.warn(err);
       }
 
-      const parser = new Parser();
+      // const parser = new Parser();
+      const service = new Service();
       // analyzer = new Parser();
       // analyzer.parse(data);
 
@@ -208,7 +212,7 @@ cli
       var analyzer = { errorCount: 0, parsedData: jsonData };
 
       if (analyzer.errorCount === 0) {
-        const dates = parser.getDatesBetween(args.dateDebut, args.dateFin);
+        const dates = service.getDatesBetween(args.dateDebut, args.dateFin);
 
         const courseData = jsonData.find((item) => item.course === args.cours);
         if (!courseData) {
@@ -222,12 +226,12 @@ cli
         dates.forEach((date) => {
           classes.forEach((cls) => {
             // Create event for each class
-            if (parser.checkWeekday(date, cls.weekday)){
+            if (service.checkWeekday(date, cls.weekday)){
               const event = `BEGIN:VEVENT
               SUMMARY:${args.cours} ${cls.type} (${cls.subGroup})
-              DTSTART;TZID=Europe/Paris:${parser.formatDateTime(date, cls.startTime)}
-              DTEND;TZID=Europe/Paris:${parser.formatDateTime(date, cls.endTime)}
-              RRULE:FREQ=WEEKLY;BYDAY=${parser.convertWeekday(cls.weekday)}
+              DTSTART;TZID=Europe/Paris:${service.formatDateTime(date, cls.startTime)}
+              DTEND;TZID=Europe/Paris:${service.formatDateTime(date, cls.endTime)}
+              RRULE:FREQ=WEEKLY;BYDAY=${service.convertWeekday(cls.weekday)}
               LOCATION:${cls.room}
               DESCRIPTION: Group ${cls.subGroup}
               END:VEVENT`;
@@ -274,7 +278,8 @@ cli
       // analyzer = new Parser();
       // analyzer.parse(data);
 
-      const parser = new Parser();
+      // const parser = new Parser();
+      const service = new Service();
       var jsonData = JSON.parse(data);
       var analyzer = { errorCount: 0, parsedData: jsonData };
 
@@ -284,7 +289,7 @@ cli
         var chartData = [];
 
         allRooms.forEach((item) => {
-          chartData.push(parser.occupationRate(analyzer.parsedData, item))
+          chartData.push(service.occupationRate(analyzer.parsedData, item))
         })
 
         var pieChart = {
