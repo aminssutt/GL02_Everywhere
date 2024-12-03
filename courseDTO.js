@@ -19,5 +19,12 @@ class CourseDTO{
      * @param {string} value 
      */
     set course(value) { this._course = value }
+
+    transformIntoJson(){
+        let json={
+            course: this.course,
+            classes: this.classes
+        }
+    }
 }
 module.exports = CourseDTO

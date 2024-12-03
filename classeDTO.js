@@ -45,5 +45,18 @@ class ClasseDTO{
     set subGroup(value) { this._subGroup = value }
     /**Setter of the room */
     set room(value) { this._room = value }
+
+    transformIntoJson(){
+        let json={
+            id: this.id,
+            type: this.type,
+            capacity: this.capacity,
+            weekday: this.weekday,
+            startTime: this.startTime,
+            endTime: this.endTime,
+            subGroup: this.subGroup,
+            room: this.room
+        }
+    }
 }
 module.exports = ClasseDTO

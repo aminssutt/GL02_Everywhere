@@ -23,7 +23,9 @@ cli
 
       var analyzer = new Parser();
       let info = analyzer.parse(data);
-      console.log(JSON.stringify(info));
+      info=JSON.stringify(info);
+      info=JSON.parse(info)
+      console.log(info)
 
       // if (analyzer.errorCount === 0) {
       //   logger.info("The file is a valid file".green);
