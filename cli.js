@@ -18,7 +18,7 @@ cli
   .action(({ args, options, logger }) => {
     
     service.check(args.file);
-
+  
   })
 
   // SPEC_1 search rooms being used given a course
