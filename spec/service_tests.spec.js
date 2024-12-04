@@ -15,7 +15,7 @@ describe("Program testing of service", function() {
             console.log("File content:", fileContent);
 
             let result = await this.service.check(this.testFilePath);
-            expect(result).toBeUndefined(); // 因为 check() 函数没有返回任何东西
+            expect(result).toBeUndefined();
         } catch (error) {
             fail(`Error occurred: ${error.message}`);
         }
@@ -54,13 +54,22 @@ describe("Program testing of service", function() {
         }
     });*/
 
-    //problem____________________________________________________________________________________
     /*it("can get available rooms for a timeslot", async function() {
         try {
             const result = await this.service.sallesDisponibles(this.testFilePath, "10:00-12:00");
             console.log("Available rooms result:", result);
+    
             expect(result).toBeDefined();
-            //expect(result.length).toBeGreaterThan(0);
+            expect(typeof result).toBe("object");
+    
+            let hasAvailableRooms = false;
+            for (let key in result) {
+                if (result[key] && Array.isArray(result[key]) && result[key].length > 0) {
+                    hasAvailableRooms = true;
+                    break;
+                }
+            }
+            expect(hasAvailableRooms).toBeTrue();
         } catch (error) {
             fail(`Error occurred: ${error.message}`);
         }
