@@ -40,14 +40,16 @@ class Parser{
     parse(data){
         this.check(data);
         //data = this.deleteComment(data);
+        //console.log(data);
         let coursesStr = data.split('+')
         let courses = [];
         for (let i=0; i<=coursesStr.length-1; i++){
             let course = this.toCourse(coursesStr[i]);
-            console.log(course)
+            //console.log(course)
             courses.push(course);
         }
-        return courses;
+        console.log(courses)
+        this.parseddata = courses;
     }
     
     /**
@@ -57,26 +59,53 @@ class Parser{
     toCourse(courseStr){
         let course = new CourseDTO(); //a course and an array of classes
         let lines = courseStr.split('\r\n')
+        //console.log(lines);
         course.course = lines[0]
         for (let i = 1; i<lines.length-1; i++){
             let classe = new ClasseDTO() //to put information about the class in a variable
-            lines[i] = lines[i].split('').filter((val, idx) => !val.match(this.symb)).join('')
             let elements = lines[i].split(',');
             classe.id = elements[0];
             classe.type = elements[1]
-            classe.capacity = elements[2]
+            let capacity = this.deleteSymb(elements[2]) //delete P=
+            classe.capacity = capacity
             let date = elements[3].split(' '); //separate weekdate and time
-            classe.weekday = date[0]
+            let weekday =  this.deleteSymb(date[0]) //delete H=
+            classe.weekday = weekday
             let hours = date[1].split('-') //separate starttime and endtime
-            classe.starttime = hours[0]
-            classe.endtime = hours[1]
-            classe.subgroup = elements[4]
-            classe.room = elements[5]
-            course.classes.push(classe) 
-        }
-        return course;
-    }
+            classe.startTime = hours[0]
+            classe.endTime = hours[1]
+            classe.subGroup = elements[4]
+            let room=this.deleteSymb(elements[5]) //delete S= and //
+            classe.room = room
+            let classeJSON = classe.transformIntoJson();
+            course.classes.push(classeJSON) 
 
+        }
+        let courseJSON = course.transformIntoJson();
+        //console.log("course "+courseJSON)
+        return courseJSON;
+    }
+    /**
+     * delete the symbols that we don't need to keep
+     * @param {string} elt 
+     * @returns string 
+     */
+    deleteSymb(elt){
+        let eltTab = elt.split('');
+        if(eltTab[0]==="P"||eltTab[0]==="H"||eltTab[0]==="S"){
+            if (eltTab[1]==="="){
+                eltTab.shift()
+                eltTab.shift()
+            }
+        }
+        let lastIndex = eltTab.length
+        if(eltTab[lastIndex-2] === '/' && eltTab[lastIndex-1]==='/'){
+            eltTab.pop()
+            eltTab.pop()
+        }
+        let eltModified = eltTab.join('');
+        return eltModified;
+    }
     /**
      * Delete the useless row of the file
      * @param {*} data 

@@ -57,6 +57,7 @@ class ClasseDTO{
             subGroup: this.subGroup,
             room: this.room
         }
+        return json;
     }
 }
 module.exports = ClasseDTO

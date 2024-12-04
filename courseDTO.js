@@ -25,6 +25,7 @@ class CourseDTO{
             course: this.course,
             classes: this.classes
         }
+        return json;
     }
 }
 module.exports = CourseDTO
