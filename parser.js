@@ -39,17 +39,18 @@ class Parser{
      */
     parse(data){
         this.check(data);
-        //data = this.deleteComment(data);
-        //console.log(data);
         let coursesStr = data.split('+')
         let courses = [];
         for (let i=0; i<=coursesStr.length-1; i++){
             let course = this.toCourse(coursesStr[i]);
-            //console.log(course)
-            courses.push(course);
+
+            if (course.course !== ''){
+                courses.push(course);
+            }
         }
-        console.log(courses)
+
         this.parseddata = courses;
+        return courses;
     }
     
     /**

@@ -17,50 +17,55 @@ class Service{
    * @param {*} file - string path to a CRU file
    */
   async check(file){
+    
     const data = await fs.readFile(file, "utf8");
-    let analyzer = this.parser.parse(data);
+    const jsonData = this.parser.parse(data);
 
-    if (analyzer.errorCount === 0) {
-      logger.info("The file is a valid file".green);
+    if (typeof(jsonData) === 'object') {
+      return jsonData;
     } else {
-      logger.info("The .cru file contains error".red);
+      return "The .cru file contains error";
     }
 
   }
 
+  /**
+   * @param {*} file - path of the .cru file
+   * @param {*} cours - course to check rooms associated
+   * @returns returns an array with json objects of filtered info os courses' rooms
+   * { nom_salle: '', capacite: '', batiment: '' }  
+   */
   async rechercheSalle(file, cours){
     const data = await fs.readFile(file, "utf8");
-    
-    var jsonData = JSON.parse(data);
-    // var jsonData = this.parser.parse(data);
-    var analyzer = { errorCount: 0, parsedData: jsonData };
+    const jsonData = this.parser.parse(data);
 
-    if (analyzer.errorCount === 0) {
-      var n = new RegExp(cours);
-      var info = this.searchRoomByCourse(analyzer.parsedData, n);
+    if (typeof(jsonData) === 'object') {
+      let n = new RegExp(cours);
+      let info = this.searchRoomByCourse(jsonData, n);
 
-      // console.log(info)
       return info;
     } else {
       return "The .cru file contains error";
     }
   }
 
+  /**
+   * @param {*} file - path of the .cru file
+   * @param {*} room  - room being searched
+   * @returns an json object with filtered information about the room
+   *  { nom_salle, capacite } 
+   */
   async capaciteSalle(file, room){
     const data = await fs.readFile(file, "utf8");
-      
-    var jsonData = JSON.parse(data);
-    // let jsonData = this.parser.parse(data);
-    var analyzer = { errorCount: 0, parsedData: jsonData };
+    const jsonData = this.parser.parse(data);
 
-    if (analyzer.errorCount === 0) {
-      var n = new RegExp(room);
-      var filtered = analyzer.parsedData
-        .flatMap((p) => p.classes)
-        .find((item) => item.room.match(n));
+    if (typeof(jsonData) === 'object') {
+      let result = {}
+      let n = new RegExp(room);
+      let filtered = jsonData.flatMap((p) => p.classes).find((item) => item.room.match(n));
 
       if (filtered) {
-        var result = {
+        result = {
           nom_salle: filtered.room,
           capacite: filtered.capacity,
         };
@@ -72,140 +77,150 @@ class Service{
     }
   }
 
+  /**
+   * @param {*} file - path of the .cru file
+   * @param {*} room - room being checked about availability
+   * @returns a json object with timeslots of the room available at each day of the week
+   *  { L: ["08:00-12:00"], MA: ["09:00-11:00", "14:00-16:00"] ... }
+   */
   async disponibiliteSalle(file, room){
     const data = await fs.readFile(file, "utf8");
+    const jsonData = this.parser.parse(data);
 
-      // var jsonData = this.parser.parse(data);
-      var jsonData = JSON.parse(data);
-      var analyzer = { errorCount: 0, parsedData: jsonData };
-
-      if (analyzer.errorCount === 0) {
-        var n = new RegExp(room);
-        return this.availability(analyzer.parsedData, n);
-      } else {
-        return "The .cru file contains error";
-      }
+    if (typeof(jsonData) === 'object') {
+      var n = new RegExp(room);
+      return this.availability(jsonData, n);
+    } else {
+      return "The .cru file contains error";
+    }
   }
 
+  /**
+   * @param {*} file - path of the .cru file
+   * @param {*} slot - timeslot to check which rooms are available
+   * @returns a json object with a list of rooms available for every day of the week
+   * { L: [ { nom_salle 'P202', capacite: 24, batiment: P } ... ], ... }
+   */
   async sallesDisponibles(file, slot){
     const data = await fs.readFile(file, "utf8");
+    const jsonData = this.parser.parse(data);
+    
+    if (typeof(jsonData) === 'object') {
+      var startSlot = slot.substring(0, 5);
+      var endSlot = slot.substring(6, 11);
+      var roomsAvaliable = [];
 
-      // var jsonData = this.parser.parse(data);
-      var jsonData = JSON.parse(data);
-      var analyzer = { errorCount: 0, parsedData: jsonData };
+      // all rooms names without duplicates
+      var allRooms = new Set(jsonData.flatMap((item) => item.classes).map((item) => item.room));
+      allRooms = [...allRooms];
 
-      if (analyzer.errorCount === 0) {
-        var startSlot = slot.substring(0, 5);
-        var endSlot = slot.substring(6, 11);
-        var roomsAvaliable = [];
+      allRooms.forEach((room) => {
+        let avb = this.availability(jsonData, new RegExp(room));
 
-        // all rooms names
-        var allRooms = new Set(analyzer.parsedData.flatMap((item) => item.classes).map((item) => item.room));
-        allRooms = [...allRooms];
-
-        allRooms.forEach((room) => {
-          let avb = this.availability(analyzer.parsedData, new RegExp(room));
-
-          // check avaliability for each room
-          for (let key in avb) {
-            for (let index in avb[key]) {
-              let str = avb[key][index];
-              if (str.substring(0, 5) <= startSlot && str.substring(6, 11) >= endSlot) {
-                // if available, put in a response all desired data in json format
-                roomsAvaliable.push({jour: key, salle: this.searchRoomByName(analyzer.parsedData, room)})
-              }
+        // check avaliability for each room
+        for (let key in avb) {
+          for (let index in avb[key]) {
+            let str = avb[key][index];
+            if (str.substring(0, 5) <= startSlot && str.substring(6, 11) >= endSlot) {
+              // if available, put in a response all desired data in json format
+              roomsAvaliable.push({jour: key, salle: this.searchRoomByName(jsonData, room)})
             }
           }
-        });
-        
-        // format to delete duplicates
-        roomsAvaliable = roomsAvaliable.reduce((acc, { jour, salle }) => {
-          if (!acc[jour]) acc[jour] = [];
-          if (!acc[jour].includes(salle)) acc[jour].push(salle);
-          return acc;
-        }, {});
+        }
+      });
+      
+      // format to delete duplicates
+      roomsAvaliable = roomsAvaliable.reduce((acc, { jour, salle }) => {
+        if (!acc[jour]) acc[jour] = [];
+        if (!acc[jour].includes(salle)) acc[jour].push(salle);
+        return acc;
+      }, {});
 
-        return roomsAvaliable;
-      } else {
-        return "The .cru file contains error";
-      }
+      return roomsAvaliable;
+    } else {
+      return "The .cru file contains error";
+    }
 
   }
 
+  /**
+   * @param {*} file - path of the .cru file
+   * @param {*} dateDebut - date when the interval of the ics file starts on format YYYY-MM-DD
+   * @param {*} dateFin - date when the interval of the ics file ends on format YYYY-MM-DD
+   * @param {*} cours - course with the info being exported
+   * @returns returns a json object with sucessful message and creates an .ics file in the same relative path
+   */
   async genererICalendar(file, dateDebut, dateFin, cours){
     const data = await fs.readFile(file, "utf8");
+    const jsonData = this.parser.parse(data);
 
-      // var jsonData = this.parser.parse(data);
-      var jsonData = JSON.parse(data);
-      var analyzer = { errorCount: 0, parsedData: jsonData };
+    if (typeof(jsonData) === 'object') {
+      const dates = this.getDatesBetween(dateDebut, dateFin);
+      const courseData = jsonData.find((item) => item.course === cours);
 
-      if (analyzer.errorCount === 0) {
-        const dates = this.getDatesBetween(dateDebut, dateFin);
+      if (!courseData) {
+        console.warn(`Course ${cours} not found.`);
+        return;
+      }
 
-        const courseData = jsonData.find((item) => item.course === cours);
-        if (!courseData) {
-          console.warn(`Course ${cours} not found.`);
+      const classes = courseData.classes;
+      const icalData = [];
+
+      dates.forEach((date) => {
+        classes.forEach((cls) => {
+          // Create event for each booked class
+          if (this.checkWeekday(date, cls.weekday)){
+            const event = `BEGIN:VEVENT
+            SUMMARY:${cours} ${cls.type} (${cls.subGroup})
+            DTSTART;TZID=Europe/Paris:${this.formatDateTime(date, cls.startTime)}
+            DTEND;TZID=Europe/Paris:${this.formatDateTime(date, cls.endTime)}
+            RRULE:FREQ=WEEKLY;BYDAY=${this.convertWeekday(cls.weekday)}
+            LOCATION:${cls.room}
+            DESCRIPTION: Group ${cls.subGroup}
+            END:VEVENT`;
+            icalData.push(event);
+          }
+        });
+      })
+
+      // iCalendar file header
+      const icalContent = `BEGIN:VCALENDAR
+      VERSION:2.0
+      PRODID:
+      ${icalData.join("\n")}
+      END:VCALENDAR`;
+      
+      // create file
+      const outputFileName = `calendar.ics`;
+      fs.writeFile(outputFileName, icalContent, (writeErr) => {
+        if (writeErr) {
+          console.warn("Error writing iCalendar file:", writeErr);
           return;
         }
+        console.log(`iCalendar file generated: ${outputFileName}`);
+      });
 
-        const classes = courseData.classes;
-        const icalData = [];
-
-        dates.forEach((date) => {
-          classes.forEach((cls) => {
-            // Create event for each booked class
-            if (this.checkWeekday(date, cls.weekday)){
-              const event = `BEGIN:VEVENT
-              SUMMARY:${cours} ${cls.type} (${cls.subGroup})
-              DTSTART;TZID=Europe/Paris:${this.formatDateTime(date, cls.startTime)}
-              DTEND;TZID=Europe/Paris:${this.formatDateTime(date, cls.endTime)}
-              RRULE:FREQ=WEEKLY;BYDAY=${this.convertWeekday(cls.weekday)}
-              LOCATION:${cls.room}
-              DESCRIPTION: Group ${cls.subGroup}
-              END:VEVENT`;
-              icalData.push(event);
-            }
-          });
-        })
-
-        // iCalendar file header
-        const icalContent = `BEGIN:VCALENDAR
-        VERSION:2.0
-        PRODID:
-        ${icalData.join("\n")}
-        END:VCALENDAR`;
-        
-        // create file
-        const outputFileName = `calendar.ics`;
-        fs.writeFile(outputFileName, icalContent, (writeErr) => {
-          if (writeErr) {
-            console.warn("Error writing iCalendar file:", writeErr);
-            return;
-          }
-          console.log(`iCalendar file generated: ${outputFileName}`);
-        });
-
-        return {message: "File created sucessfully"};
-      } else {
-        return "The .cru file contains error";
-      }
+      return {message: "File created sucessfully"};
+    } else {
+      return "The .cru file contains error";
+    }
     }
 
+  /**
+   * @param {*} file - path of the .cru file
+   * @returns returns a json object with sucessful message and creates a .svg file with the chart of the occupancy rate
+   */
   async tauxOccupation(file){
     const data = await fs.readFile(file, "utf8");
+    var jsonData = this.parser.parse(data);
       
-      
-    // var jsonData = this.parser.parse(data);
-    var jsonData = JSON.parse(data);
-    var analyzer = { errorCount: 0, parsedData: jsonData };
-
-    if (analyzer.errorCount === 0) {
-      var allRooms = new Set(analyzer.parsedData.flatMap((item) => item.classes).map((item) => item.room));
+    if (typeof(jsonData) === 'object') {
+      var allRooms = new Set(jsonData.flatMap((item) => item.classes).map((item) => item.room));
       allRooms = [...allRooms];
       var chartData = [];
 
       allRooms.forEach((item) => {
-        chartData.push(this.occupationRate(analyzer.parsedData, item))
+        chartData.push(this.occupationRate(jsonData, item))
       })
 
       var pieChart = {
@@ -246,16 +261,19 @@ class Service{
     }
   }
 
+  /**
+   * @param {*} file - path of the .cru file
+   * @param {*} ordre - type of ordering (asc or desc)
+   * @returns a json array with objects filtering rooms info
+   *  { nom_salle: 'P201', capacite: 24 }
+   */
   async classementSalles(file, ordre){
     const data = await fs.readFile(file, "utf8");
+    var jsonData = this.parser.parse(data);
 
-    // var jsonData = this.parser.parse(data);
-    var jsonData = JSON.parse(data);
-    var analyzer = { errorCount: 0, parsedData: jsonData };
-
-    if (analyzer.errorCount === 0) {
+    if (typeof(jsonData) === 'object') {
       var allRooms = Array.from(
-        new Set(analyzer.parsedData
+        new Set(jsonData
           .flatMap((item) => item.classes)
           .map((item) => JSON.stringify({ nom_salle: item.room, capacite: item.capacity })))
       ).map((item) => JSON.parse(item));
