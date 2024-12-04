@@ -3,7 +3,7 @@
     "course": "MC01",
     "classes": [
       {
-        "idk": 1,
+        "id": 1,
         "type": "C1",
         "capacity": 30,
         "weekday": "V",
@@ -13,7 +13,7 @@
         "room": "P201"
       },
       {
-        "idk": 1,
+        "id": 1,
         "type": "T1",
         "capacity": 24,
         "weekday": "V",
@@ -28,7 +28,7 @@
     "course": "MC02",
     "classes": [
       {
-        "idk": 1,
+        "id": 1,
         "type": "C1",
         "capacity": 28,
         "weekday": "V",
@@ -38,7 +38,7 @@
         "room": "P202"
       },
       {
-        "idk": 1,
+        "id": 1,
         "type": "T1",
         "capacity": 24,
         "weekday": "V",
@@ -48,7 +48,7 @@
         "room": "EXT1"
       },
       {
-        "idk": 1,
+        "id": 1,
         "type": "T1",
         "capacity": 26,
         "weekday": "V",
@@ -58,7 +58,7 @@
         "room": "EXT1"
       },
       {
-        "idk": 1,
+        "id": 1,
         "type": "T1",
         "capacity": 26,
         "weekday": "V",
