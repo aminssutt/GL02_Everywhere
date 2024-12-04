@@ -15,7 +15,7 @@ const CourseDTO = require("./courseDTO");
 +ME05
 1,C1,P=62,H=ME 12:00-16:00,F1,S=B101//
 1,D1,P=64,H=ME 16:00-20:00,F1,S=B101//
- */
+*/
 
 class Parser{
     constructor(){
@@ -141,4 +141,3 @@ class Parser{
     }
 }
 module.exports = Parser;
-
