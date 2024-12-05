@@ -1,5 +1,5 @@
 # Team Everywhere - Project implementation of OG Men
-Students: LI Zhenpeng, VIALA Morgane, SESTITO GUERRA Gabriel
+Students: LI Zhenpeng, SESTITO GUERRA Gabriel, VIALA Morgane
 
 ## Installing
 
