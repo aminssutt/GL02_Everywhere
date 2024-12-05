@@ -15,9 +15,15 @@ cli
   // check Data File
   .command("check", "Check if <file> is a valid data file")
   .argument("<file>", "The file to check with Vpf parser")
-  .action(({ args, options, logger }) => {
+  .action(async ({ args, options, logger }) => {
     
-    service.check(args.file);
+    const result = await service.check(args.file);
+
+    if (typeof(result) === 'string') {
+      logger.info(result.red);
+    } else {
+      logger.info("%s", JSON.stringify(result, null, 2));
+    }
   
   })
 
