@@ -21,7 +21,6 @@ class Parser{
     constructor(){
         this.symb = ["P=", "H=", "S=", "//"]
         this.regex = /^(?:\+\w{2}\d{2}$(?:\r?\n|$)|\d,[A-Z]\d,P=\d+,H=(L|MA|ME|J|V|S|D) (\d|1\d|2[0-3]):[0-5]\d-(0\d|1\d|2[0-3]):[0-5]\d,[A-Z]\d,S=\w+\/\/$(?:\r?\n|$))+/gm
-        this.parseddata = []
     }
     
     /**
@@ -38,19 +37,25 @@ class Parser{
      * @returns 
      */
     parse(data){
-        this.check(data);
-        let coursesStr = data.split('+')
-        let courses = [];
-        for (let i=0; i<=coursesStr.length-1; i++){
-            let course = this.toCourse(coursesStr[i]);
-
-            if (course.course !== ''){
-                courses.push(course);
+        try{
+            let courses = [];
+            if(this.check(data)){
+                let coursesStr = data.split('+');
+                for (let i=0; i<=coursesStr.length-1; i++){
+                    let course = this.toCourse(coursesStr[i]);
+                    if (course.course !== ''){
+                        courses.push(course);
+                    }
+                }
+                this.parseddata = courses;
             }
+            else{
+                courses="ERROR : the file is not in the right format";
+            }
+            return courses;
+        } catch (error) {
+            console.log(error.stack)
         }
-
-        this.parseddata = courses;
-        return courses;
     }
     
     /**
@@ -60,7 +65,6 @@ class Parser{
     toCourse(courseStr){
         let course = new CourseDTO(); //a course and an array of classes
         let lines = courseStr.split('\r\n')
-        //console.log(lines);
         course.course = lines[0]
         for (let i = 1; i<lines.length-1; i++){
             let classe = new ClasseDTO() //to put information about the class in a variable
@@ -80,12 +84,11 @@ class Parser{
             classe.room = room
             let classeJSON = classe.transformIntoJson();
             course.classes.push(classeJSON) 
-
         }
         let courseJSON = course.transformIntoJson();
-        //console.log("course "+courseJSON)
         return courseJSON;
     }
+    
     /**
      * delete the symbols that we don't need to keep
      * @param {string} elt 
@@ -107,6 +110,7 @@ class Parser{
         let eltModified = eltTab.join('');
         return eltModified;
     }
+
     /**
      * Delete the useless row of the file
      * @param {*} data 
