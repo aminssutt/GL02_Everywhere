@@ -40,6 +40,7 @@ class Parser{
         try{
             let courses = [];
             if(this.check(data)){
+                data = this.deleteComment(data)
                 let coursesStr = data.split('+');
                 for (let i=0; i<=coursesStr.length-1; i++){
                     let course = this.toCourse(coursesStr[i]);
@@ -136,9 +137,12 @@ class Parser{
                 toDelete.push(i)
             }
         }
+
         for (let i= toDelete.length ; i>=0; i--){
-            searchEndArray.splice(toDelete[i], 1)
+            // searchEndArray.splice(toDelete[i], 1)
+            searchEndArray.pop(i);
         }
+        
         //searchEndArray.pop()
         let withoutEndComment = searchEndArray.join('\r\n')
         return withoutEndComment
