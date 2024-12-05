@@ -9,7 +9,7 @@ Students: LI Zhenpeng, SESTITO GUERRA Gabriel, VIALA Morgane
 
 ## Command List
 
-### Check 
+### `check` 
 
 The operation checks if the .cru file has a valid syntax. If it does, the CLI will display the content in a JSON format.
 
@@ -21,7 +21,7 @@ Exemple of usage
 node cli.js check ./data.cru
 ```
 
-### recherche-salle
+### `recherche-salle`
 
 This command searches for all classrooms linked with a given course, then will generate a JSON array with all the matches. 
 
@@ -34,7 +34,7 @@ Exemple of usage
 node cli.js recherche-salle ./data.cru MC01
 ```
 
-### capacite-salle
+### `capacite-salle`
 
 It displays some of searched classroom's information as a JSON Object.
 
@@ -47,7 +47,7 @@ Exemple of usage
 node cli.js capacite-salle ./data.cru P202
 ```
 
-### salles-disponibles
+### `salles-disponibles`
 
 This operation searches for all available classrooms given a specific timeslot. 
 
@@ -59,7 +59,7 @@ Parameters:
 node cli.js salles-disponibles ./data.cru 08:00-12:00
 ```
 
-### disponibilite-salle
+### `disponibilite-salle`
 
 The functionality check all available timeslots for a given clasroom and display by day of week in a JSON Object.
 
@@ -73,7 +73,7 @@ node cli.js disponibilite-salle ./data.cru B101
 ```
 
 
-### generer-icalendar 
+### `generer-icalendar` 
 
 It creates a .ics file with all the timetable of a given course for the time period specified.
 
@@ -85,10 +85,10 @@ Parameters:
 
 Exemple of usage
 ```
-node cli.js igenerer-icalendar ./data.cru 2024-10-01 2024-10-31 MC01
+node cli.js generer-icalendar ./data.cru 2024-10-01 2024-10-31 MC01
 ```
 
-### taux-occupation
+### `taux-occupation`
 
 This command generates a classrooms' occupancy rate chart in .svg format
 
@@ -100,7 +100,7 @@ Exemple of usage
 node cli.js taux-occupation ./data.cru
 ```
 
-### classement-salles
+### `classement-salles`
 
 It will show classrooms' capacity sorted by asc or desc
 
