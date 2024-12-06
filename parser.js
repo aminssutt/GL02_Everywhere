@@ -19,7 +19,8 @@ const CourseDTO = require("./courseDTO");
 
 class Parser{
     constructor(){
-        this.symb = ["P=", "H=", "S=", "//"]
+        this.symb = ["P=", "H=", "S=", "//"] 
+        //Below : the big regex to verify the whole file we are reading
         this.regex = /^(?:\+\w{2}\d{2}$(?:\r?\n|$)|\d,[A-Z]\d,P=\d+,H=(L|MA|ME|J|V|S|D) (\d|1\d|2[0-3]):[0-5]\d-(0\d|1\d|2[0-3]):[0-5]\d,[A-Z]\d,S=\w+\/\/$(?:\r?\n|$))+/gm
     }
     
@@ -66,25 +67,36 @@ class Parser{
     toCourse(courseStr){
         let course = new CourseDTO(); //a course and an array of classes
         let lines = courseStr.split('\r\n')
-        course.course = lines[0]
-        for (let i = 1; i<lines.length-1; i++){
-            let classe = new ClasseDTO() //to put information about the class in a variable
-            let elements = lines[i].split(',');
-            classe.id = elements[0];
-            classe.type = elements[1]
-            let capacity = this.deleteSymb(elements[2]) //delete P=
-            classe.capacity = capacity
-            let date = elements[3].split(' '); //separate weekdate and time
-            let weekday =  this.deleteSymb(date[0]) //delete H=
-            classe.weekday = weekday
-            let hours = date[1].split('-') //separate starttime and endtime
-            classe.startTime = hours[0]
-            classe.endTime = hours[1]
-            classe.subGroup = elements[4]
-            let room=this.deleteSymb(elements[5]) //delete S= and //
-            classe.room = room
-            let classeJSON = classe.transformIntoJson();
-            course.classes.push(classeJSON) 
+        course.course = lines[0];
+        for (let i = 1; i<=lines.length-1; i++){
+            if (lines[i]!==''){
+                let classe = new ClasseDTO() //to put information about the class in a variable
+                let elements = lines[i].split(',');
+                classe.id = elements[0];
+                classe.type = elements[1];
+                let capacity = this.deleteSymb(elements[2]); //delete "P="
+                classe.capacity = capacity;
+                let date = elements[3].split(' '); //separate weekday and time
+                let weekday =  this.deleteSymb(date[0]); //delete "H="
+                classe.weekday = weekday;
+                let hours = date[1].split('-'); //separate starttime and endtime
+
+                if (hours[0].length<= 4){
+                    hours[0] = "0" + hours[0]
+                }
+
+                if (hours[1].length<= 4){
+                    hours[1] = "0" + hours[1]
+                }
+
+                classe.startTime = hours[0];
+                classe.endTime = hours[1];
+                classe.subGroup = elements[4];
+                let room=this.deleteSymb(elements[5]); //delete "S="" and "//"
+                classe.room = room;
+                let classeJSON = classe.transformIntoJson();
+                course.classes.push(classeJSON); 
+            }
         }
         let courseJSON = course.transformIntoJson();
         return courseJSON;
@@ -114,8 +126,8 @@ class Parser{
 
     /**
      * Delete the useless row of the file
-     * @param {*} data 
-     * @returns 
+     * @param {string} data 
+     * @returns data(string) but without useless lines
      */
     deleteComment(data){
         let dataArray = data.split('')
@@ -124,29 +136,28 @@ class Parser{
         for (let i = 0; i<=dataArray.length;i++){
             if (dataArray[i]==='+'){
                 counterPlus += 1
-                if (counterPlus ===2){
+                if (counterPlus === 2){
                     indexDelete = i
                 }
             }
         }
         let withoutStartComment = dataArray.slice(indexDelete, dataArray.length).join('')
         let searchEndArray = withoutStartComment.split('\r\n')
-        let toDelete=[];
+        let toDelete=[]; //array of the index we need to delet
         for (let i = 0; i<searchEndArray.length; i++){
             if (searchEndArray[i]===''){
-                toDelete.push(i)
+                toDelete.push(i);
             }
         }
-
-        for (let i= toDelete.length ; i>=0; i--){
-            // searchEndArray.splice(toDelete[i], 1)
-            searchEndArray.pop(i);
+        if(toDelete.length !== 0){ //in case of there is nothing to delete otherwise it delete the last line of the document
+            for (let i= toDelete.length ; i>=0; i--){ //we take the lines backward so the index of the line to delete doesn't change
+                searchEndArray.pop(i);
+            }    
         }
         
         //searchEndArray.pop()
         let withoutEndComment = searchEndArray.join('\r\n')
         return withoutEndComment
-        //ca supprime la premiere ligne, et ca me laisse des espaces en bas
     }
 }
 module.exports = Parser;
