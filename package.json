@@ -1,0 +1,25 @@
+{
+  "name": "gl02_everywhere",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cli.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT/BSD",
+  "dependencies": {
+    "@caporal/core": "^3.0.2",
+    "colors": "^1.4.0",
+    "vega": "^5.17.0",
+    "vega-lite": "^4.17.0"
+  },
+  "devDependencies": {
+    "jasmine": "^3.6.3"
+  },
+  "overrides": {
+    "ajv": "^8.17.1",
+    "whatwg-url": "^14.0.0"
+  }
+}
