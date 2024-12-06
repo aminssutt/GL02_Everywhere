@@ -80,6 +80,15 @@ class Parser{
                 let weekday =  this.deleteSymb(date[0]); //delete "H="
                 classe.weekday = weekday;
                 let hours = date[1].split('-'); //separate starttime and endtime
+
+                if (hours[0].length<= 4){
+                    hours[0] = "0" + hours[0]
+                }
+
+                if (hours[1].length<= 4){
+                    hours[1] = "0" + hours[1]
+                }
+
                 classe.startTime = hours[0];
                 classe.endTime = hours[1];
                 classe.subGroup = elements[4];
