@@ -44,10 +44,7 @@ cli
   })
 
   // SPEC_2 show rooms' capacity given a room name
-  .command(
-    "capacite-salle",
-    "Free text search on room's capacity given its name"
-  )
+  .command("capacite-salle", "Free text search on room's capacity given its name")
   .argument("<file>", "The data file to search")
   .argument("<room>", "The text to look for in rooms' names")
   .action(async ({ args, options, logger }) => {
