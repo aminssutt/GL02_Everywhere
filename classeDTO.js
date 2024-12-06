@@ -3,9 +3,9 @@ class ClasseDTO{
      * Empty constructor 
      */
     constructor(){
-        this._id
+        this._id = ""
         this._type = ""
-        this._capacity
+        this._capacity = 0
         this._weekday=""
         this._startTime=""
         this._endTime=""
