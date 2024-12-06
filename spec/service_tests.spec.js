@@ -6,20 +6,22 @@ describe("Program testing of service", function() {
     beforeAll(function() {
         this.service = new Service();
         this.testFilePath = path.resolve(__dirname, "../data.txt");
+        this.validFilePath = path.resolve(__dirname, "../data.cru");
     });
 
-    //problem__________________________________________________________________________
     /*it("can check if the file has a valid syntax", async function() {
         try {
-            const fileContent = await fs.readFile(this.testFilePath, "utf8");
+            const fileContent = await fs.readFile(this.validFilePath, "utf8");
             console.log("File content:", fileContent);
 
-            let result = await this.service.check(this.testFilePath);
-            expect(result).toBeUndefined();
+            let result = await this.service.check(this.validFilePath);
+            expect(result).not.toBe("The .cru file contains error");
+            expect(typeof result).toBe('object');
         } catch (error) {
             fail(`Error occurred: ${error.message}`);
         }
     });*/
+
 
     /*it("can search for room by course", async function() {
         try {
