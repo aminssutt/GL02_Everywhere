@@ -22,6 +22,7 @@ class Parser{
         this.symb = ["P=", "H=", "S=", "//"] 
         //Below : the big regex to verify the whole file we are reading
         this.regex = /^(?:\+\w{2}\d{2}$(?:\r?\n|$)|\d,[A-Z]\d,P=\d+,H=(L|MA|ME|J|V|S|D) (\d|1\d|2[0-3]):[0-5]\d-(0\d|1\d|2[0-3]):[0-5]\d,[A-Z]\d,S=\w+\/\/$(?:\r?\n|$))+/gm
+        this.regexClasses = /^\d,[A-Z]\d,P=\d+,H=(L|MA|ME|J|V|S|D) (\d|1\d|2[0-3]):[0-5]\d-(0\d|1\d|2[0-3]):[0-5]\d,[A-Z]\d,S=\w+\/\/$/;
     }
     
     /**
@@ -130,34 +131,33 @@ class Parser{
      * @returns data(string) but without useless lines
      */
     deleteComment(data){
-        let dataArray = data.split('')
-        let counterPlus = 0
-        let indexDelete= -1;
+        data = data.trim();
+        let dataArray = data.split('\r\n');
+        let buffer = [];
+        let formatted = [];
+
         for (let i = 0; i<=dataArray.length;i++){
-            if (dataArray[i]==='+'){
-                counterPlus += 1
-                if (counterPlus === 2){
-                    indexDelete = i
+            if (dataArray[i] && dataArray[i][0]==="+"){
+                let j = i+1;
+                this.regex.lastIndex = 0;
+                
+                while(this.regexClasses.test(dataArray[j])){
+                    buffer.push(dataArray[j]);
+                    this.regexClasses.lastIndex = 0;
+                    j++;
+                }
+
+                if (buffer.length > 0){
+                    formatted.push(dataArray[i]);
+                    for (let index in buffer){
+                        formatted.push(buffer[index]);
+                    }
+                    buffer = [];
                 }
             }
         }
-        let withoutStartComment = dataArray.slice(indexDelete, dataArray.length).join('')
-        let searchEndArray = withoutStartComment.split('\r\n')
-        let toDelete=[]; //array of the index we need to delet
-        for (let i = 0; i<searchEndArray.length; i++){
-            if (searchEndArray[i]===''){
-                toDelete.push(i);
-            }
-        }
-        if(toDelete.length !== 0){ //in case of there is nothing to delete otherwise it delete the last line of the document
-            for (let i= toDelete.length ; i>=0; i--){ //we take the lines backward so the index of the line to delete doesn't change
-                searchEndArray.pop(i);
-            }    
-        }
-        
-        //searchEndArray.pop()
-        let withoutEndComment = searchEndArray.join('\r\n')
-        return withoutEndComment
+        formatted = formatted.join('\r\n');
+        return formatted
     }
 }
 module.exports = Parser;

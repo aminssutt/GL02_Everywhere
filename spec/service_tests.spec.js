@@ -1,66 +1,57 @@
 const Service = require('../service.js');
-const fs = require('fs/promises');
 const path = require('path');
 
 describe("Program testing of service", function() {
     beforeAll(function() {
         this.service = new Service();
-        this.testFilePath = path.resolve(__dirname, "../data.txt");
         this.validFilePath = path.resolve(__dirname, "../data.cru");
     });
 
-    /*it("can check if the file has a valid syntax", async function() {
+    it("can check if the file has a valid syntax", async function() {
         try {
-            const fileContent = await fs.readFile(this.validFilePath, "utf8");
-            console.log("File content:", fileContent);
-
             let result = await this.service.check(this.validFilePath);
             expect(result).not.toBe("The .cru file contains error");
             expect(typeof result).toBe('object');
         } catch (error) {
             fail(`Error occurred: ${error.message}`);
         }
-    });*/
+    });
 
 
-    /*it("can search for room by course", async function() {
+    it("can search for room by course", async function() {
         try {
-            const result = await this.service.rechercheSalle(this.testFilePath, "MC01");
-            console.log("Room search result:", result);
+            const result = await this.service.rechercheSalle(this.validFilePath, "MC01");
             expect(result).toBeDefined();
             expect(result.length).toBeGreaterThan(0);
         } catch (error) {
             fail(`Error occurred: ${error.message}`);
         }
-    });*/
+    });
 
-    /*it("can get the capacity of a room", async function() {
+    it("can get the capacity of a room", async function() {
         try {
-            const result = await this.service.capaciteSalle(this.testFilePath, "P201");
-            console.log("Room capacity result:", result);
+            const result = await this.service.capaciteSalle(this.validFilePath, "P202");
             expect(result).toBeDefined();
-            expect(result.capacite).toBe(30);
+            expect(result.capacite).toBe('24');
         } catch (error) {
             fail(`Error occurred: ${error.message}`);
         }
-    });*/
+    });
 
-    /*it("can get availability of a room", async function() {
+    it("can get availability of a room", async function() {
         try {
-            const result = await this.service.disponibiliteSalle(this.testFilePath, "P201");
-            console.log("Room availability result:", result);
+            const result = await this.service.disponibiliteSalle(this.validFilePath, "P202");
             expect(result).toBeDefined();
-            expect(result.V).toContain("08:00-10:00");
+            expect(result.V).toContain("08:00-20:00");
         } catch (error) {
             fail(`Error occurred: ${error.message}`);
         }
-    });*/
+    });
 
-    /*it("can get available rooms for a timeslot", async function() {
+    it("can get available rooms for a timeslot", async function() {
         try {
-            const result = await this.service.sallesDisponibles(this.testFilePath, "10:00-12:00");
-            console.log("Available rooms result:", result);
-    
+            const result = await this.service.sallesDisponibles(this.validFilePath, "10:00-12:00");
+
             expect(result).toBeDefined();
             expect(typeof result).toBe("object");
     
@@ -75,40 +66,37 @@ describe("Program testing of service", function() {
         } catch (error) {
             fail(`Error occurred: ${error.message}`);
         }
-    });*/
+    });
 
-    /*it("can generate iCalendar file for a given date range and course", async function() {
+    it("can generate iCalendar file for a given date range and course", async function() {
         try {
-            const result = await this.service.genererICalendar(this.testFilePath, "2024-12-01", "2024-12-31", "MC01");
-            console.log("iCalendar generation result:", result);
+            const result = await this.service.genererICalendar(this.validFilePath, "2024-12-01", "2024-12-31", "MC01");
             expect(result).toBeDefined();
             expect(result.message).toBe("File created sucessfully");
         } catch (error) {
             fail(`Error occurred: ${error.message}`);
         }
-    });*/
+    });
 
-    /*it("can calculate room occupation rate", async function() {
+    it("can calculate room occupation rate", async function() {
         try {
-            const result = await this.service.tauxOccupation(this.testFilePath);
-            console.log("Room occupation rate result:", result);
+            const result = await this.service.tauxOccupation(this.validFilePath);
             expect(result).toBeDefined();
             expect(result.message).toBe("Chart generated successfully");
         } catch (error) {
             fail(`Error occurred: ${error.message}`);
         }
-    });*/
+    });
 
-    /*it("can sort rooms by capacity", async function() {
+    it("can sort rooms by capacity", async function() {
         try {
-            const result = await this.service.classementSalles(this.testFilePath, "asc");
-            console.log("Rooms sorted by capacity result:", result);
+            const result = await this.service.classementSalles(this.validFilePath, "asc");
             expect(result).toBeDefined();
             expect(result.length).toBeGreaterThan(0);
             expect(result[0].capacite).toBeLessThanOrEqual(result[1].capacite);
         } catch (error) {
             fail(`Error occurred: ${error.message}`);
         }
-    });*/
+    });
 
 });
