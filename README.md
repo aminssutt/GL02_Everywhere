@@ -3,7 +3,7 @@ Students: LI Zhenpeng, SESTITO GUERRA Gabriel, VIALA Morgane
 
 ## Installing
 
-1. Unzip de the repository file
+1. Unzip the repository file
 2. Open the folder GL02_Everywhere in terminal
 3. Run the command  `npm install`
 
