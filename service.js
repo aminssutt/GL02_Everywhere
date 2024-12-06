@@ -14,7 +14,7 @@ class Service{
 
   /**
    * receive a .CRU file and check its sintax
-   * @param {*} file - string path to a CRU file
+   * @param {file} - string path to a CRU file
    */
   async check(file){
     
@@ -30,8 +30,8 @@ class Service{
   }
 
   /**
-   * @param {*} file - path of the .cru file
-   * @param {*} cours - course to check rooms associated
+   * @param {file}  - path of the .cru file
+   * @param {cours}  - course to check rooms associated
    * @returns returns an array with json objects of filtered info os courses' rooms
    * { nom_salle: '', capacite: '', batiment: '' }  
    */
@@ -50,8 +50,8 @@ class Service{
   }
 
   /**
-   * @param {*} file - path of the .cru file
-   * @param {*} room  - room being searched
+   * @param {file}  - path of the .cru file
+   * @param {room}   - room being searched
    * @returns an json object with filtered information about the room
    *  { nom_salle, capacite } 
    */
@@ -78,8 +78,8 @@ class Service{
   }
 
   /**
-   * @param {*} file - path of the .cru file
-   * @param {*} room - room being checked about availability
+   * @param {file}  - path of the .cru file
+   * @param {room}  - room being checked about availability
    * @returns a json object with timeslots of the room available at each day of the week
    *  { L: ["08:00-12:00"], MA: ["09:00-11:00", "14:00-16:00"] ... }
    */
@@ -96,8 +96,8 @@ class Service{
   }
 
   /**
-   * @param {*} file - path of the .cru file
-   * @param {*} slot - timeslot to check which rooms are available
+   * @param {file}  - path of the .cru file
+   * @param {slot}  - timeslot to check which rooms are available
    * @returns a json object with a list of rooms available for every day of the week
    * { L: [ { nom_salle 'P202', capacite: 24, batiment: P } ... ], ... }
    */
@@ -144,10 +144,10 @@ class Service{
   }
 
   /**
-   * @param {*} file - path of the .cru file
-   * @param {*} dateDebut - date when the interval of the ics file starts on format YYYY-MM-DD
-   * @param {*} dateFin - date when the interval of the ics file ends on format YYYY-MM-DD
-   * @param {*} cours - course with the info being exported
+   * @param {file}  - path of the .cru file
+   * @param {dateDebut}  - date when the interval of the ics file starts on format YYYY-MM-DD
+   * @param {dateFin}  - date when the interval of the ics file ends on format YYYY-MM-DD
+   * @param {cours}  - course with the info being exported
    * @returns returns a json object with sucessful message and creates an .ics file in the same relative path
    */
   async genererICalendar(file, dateDebut, dateFin, cours){
@@ -207,7 +207,7 @@ class Service{
     }
 
   /**
-   * @param {*} file - path of the .cru file
+   * @param {file}  - path of the .cru file
    * @returns returns a json object with sucessful message and creates a .svg file with the chart of the occupancy rate
    */
   async tauxOccupation(file){
@@ -262,8 +262,8 @@ class Service{
   }
 
   /**
-   * @param {*} file - path of the .cru file
-   * @param {*} ordre - type of ordering (asc or desc)
+   * @param {file}  - path of the .cru file
+   * @param {ordre}  - type of ordering (asc or desc)
    * @returns a json array with objects filtering rooms info
    *  { nom_salle: 'P201', capacite: 24 }
    */
@@ -368,7 +368,6 @@ class Service{
         availability.push("08:00-20:00");
       }
 
-      // console.log(`${day}: ` + availability);
       result[day] = availability;
     });
     return result;
