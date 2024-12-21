@@ -81,7 +81,14 @@ cli
   .argument("<file>", "The data file to search")
   .argument("<slot>", "The timeslot searched for availability")
   .action(async ({ args, options, logger }) => {
-    
+  // Check if the slot is valid
+    const slot = args.slot;
+  const slotRegex = /^([0-1]\d|2[0-2]):([0-5]\d)-([0-1]\d|2[0-2]):([0-5]\d)$/;
+      // check the hour format
+  if (!slotRegex.test(slot)) {
+    logger.error("Le créneau horaire doit être au format HH:MM-HH:MM, avec des heures entre 08:00 et 22:00 et des minutes entre 00 et 59.");
+    return;
+  }
     const result = await service.sallesDisponibles(args.file, args.slot);
 
     if (typeof(result) === 'string') {
