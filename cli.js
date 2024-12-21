@@ -17,6 +17,7 @@ cli
   .argument("<file>", "The file to check with Vpf parser")
   .action(async ({ args, options, logger }) => {
     
+  
     const result = await service.check(args.file);
 
     if (typeof(result) === 'string') {
@@ -99,6 +100,17 @@ cli
   .argument("<cours>", "Course searched to export")
   .action(async ({ args, options, logger }) => {
     
+    const dateDebut = new Date(args.dateDebut);
+    const dateFin = new Date(args.dateFin);
+// Check if the dates are valid
+  if (isNaN(dateDebut) || isNaN(dateFin)) {
+    logger.error("Date invalide.");
+    return;
+  } else if (dateDebut > dateFin) {
+    logger.error("Date of beginning is after the date of end.");
+    return;
+  }
+  
     const result = await service.genererICalendar(args.file, args.dateDebut, args.dateFin, args.cours);
 
     if (typeof(result) === 'string') {
@@ -106,8 +118,9 @@ cli
     } else {
       logger.info("%s", JSON.stringify(result, null, 2));
     }
+  }
 
-  })
+  )
 
   // SPEC_6 generate chart
   .command(

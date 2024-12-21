@@ -1,68 +1,1828 @@
 BEGIN:VCALENDAR
-        VERSION:2.0
-        PRODID:
-        BEGIN:VEVENT
-              SUMMARY:MC01 C1 (F1)
-              DTSTART;TZID=Europe/Paris:20241206T100000
-              DTEND;TZID=Europe/Paris:20241206T120000
-              RRULE:FREQ=WEEKLY;BYDAY=FR
-              LOCATION:P201
-              DESCRIPTION: Group F1
-              END:VEVENT
+      VERSION:2.0
+      PRODID:
+      BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240606T100000
+            DTEND;TZID=Europe/Paris:20240606T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
 BEGIN:VEVENT
-              SUMMARY:MC01 T1 (F2)
-              DTSTART;TZID=Europe/Paris:20241206T160000
-              DTEND;TZID=Europe/Paris:20241206T180000
-              RRULE:FREQ=WEEKLY;BYDAY=FR
-              LOCATION:EXT1
-              DESCRIPTION: Group F2
-              END:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240606T130000
+            DTEND;TZID=Europe/Paris:20240606T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
 BEGIN:VEVENT
-              SUMMARY:MC01 C1 (F1)
-              DTSTART;TZID=Europe/Paris:20241213T100000
-              DTEND;TZID=Europe/Paris:20241213T120000
-              RRULE:FREQ=WEEKLY;BYDAY=FR
-              LOCATION:P201
-              DESCRIPTION: Group F1
-              END:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240613T100000
+            DTEND;TZID=Europe/Paris:20240613T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
 BEGIN:VEVENT
-              SUMMARY:MC01 T1 (F2)
-              DTSTART;TZID=Europe/Paris:20241213T160000
-              DTEND;TZID=Europe/Paris:20241213T180000
-              RRULE:FREQ=WEEKLY;BYDAY=FR
-              LOCATION:EXT1
-              DESCRIPTION: Group F2
-              END:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240613T130000
+            DTEND;TZID=Europe/Paris:20240613T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
 BEGIN:VEVENT
-              SUMMARY:MC01 C1 (F1)
-              DTSTART;TZID=Europe/Paris:20241220T100000
-              DTEND;TZID=Europe/Paris:20241220T120000
-              RRULE:FREQ=WEEKLY;BYDAY=FR
-              LOCATION:P201
-              DESCRIPTION: Group F1
-              END:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240620T100000
+            DTEND;TZID=Europe/Paris:20240620T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
 BEGIN:VEVENT
-              SUMMARY:MC01 T1 (F2)
-              DTSTART;TZID=Europe/Paris:20241220T160000
-              DTEND;TZID=Europe/Paris:20241220T180000
-              RRULE:FREQ=WEEKLY;BYDAY=FR
-              LOCATION:EXT1
-              DESCRIPTION: Group F2
-              END:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240620T130000
+            DTEND;TZID=Europe/Paris:20240620T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
 BEGIN:VEVENT
-              SUMMARY:MC01 C1 (F1)
-              DTSTART;TZID=Europe/Paris:20241227T100000
-              DTEND;TZID=Europe/Paris:20241227T120000
-              RRULE:FREQ=WEEKLY;BYDAY=FR
-              LOCATION:P201
-              DESCRIPTION: Group F1
-              END:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240627T100000
+            DTEND;TZID=Europe/Paris:20240627T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
 BEGIN:VEVENT
-              SUMMARY:MC01 T1 (F2)
-              DTSTART;TZID=Europe/Paris:20241227T160000
-              DTEND;TZID=Europe/Paris:20241227T180000
-              RRULE:FREQ=WEEKLY;BYDAY=FR
-              LOCATION:EXT1
-              DESCRIPTION: Group F2
-              END:VEVENT
-        END:VCALENDAR
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240627T130000
+            DTEND;TZID=Europe/Paris:20240627T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240704T100000
+            DTEND;TZID=Europe/Paris:20240704T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240704T130000
+            DTEND;TZID=Europe/Paris:20240704T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240711T100000
+            DTEND;TZID=Europe/Paris:20240711T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240711T130000
+            DTEND;TZID=Europe/Paris:20240711T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240718T100000
+            DTEND;TZID=Europe/Paris:20240718T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240718T130000
+            DTEND;TZID=Europe/Paris:20240718T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240725T100000
+            DTEND;TZID=Europe/Paris:20240725T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240725T130000
+            DTEND;TZID=Europe/Paris:20240725T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240801T100000
+            DTEND;TZID=Europe/Paris:20240801T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240801T130000
+            DTEND;TZID=Europe/Paris:20240801T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240808T100000
+            DTEND;TZID=Europe/Paris:20240808T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240808T130000
+            DTEND;TZID=Europe/Paris:20240808T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240815T100000
+            DTEND;TZID=Europe/Paris:20240815T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240815T130000
+            DTEND;TZID=Europe/Paris:20240815T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240822T100000
+            DTEND;TZID=Europe/Paris:20240822T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240822T130000
+            DTEND;TZID=Europe/Paris:20240822T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240829T100000
+            DTEND;TZID=Europe/Paris:20240829T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240829T130000
+            DTEND;TZID=Europe/Paris:20240829T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240905T100000
+            DTEND;TZID=Europe/Paris:20240905T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240905T130000
+            DTEND;TZID=Europe/Paris:20240905T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240912T100000
+            DTEND;TZID=Europe/Paris:20240912T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240912T130000
+            DTEND;TZID=Europe/Paris:20240912T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240919T100000
+            DTEND;TZID=Europe/Paris:20240919T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240919T130000
+            DTEND;TZID=Europe/Paris:20240919T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20240926T100000
+            DTEND;TZID=Europe/Paris:20240926T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20240926T130000
+            DTEND;TZID=Europe/Paris:20240926T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241003T100000
+            DTEND;TZID=Europe/Paris:20241003T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241003T130000
+            DTEND;TZID=Europe/Paris:20241003T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241010T100000
+            DTEND;TZID=Europe/Paris:20241010T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241010T130000
+            DTEND;TZID=Europe/Paris:20241010T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241017T100000
+            DTEND;TZID=Europe/Paris:20241017T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241017T130000
+            DTEND;TZID=Europe/Paris:20241017T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241024T100000
+            DTEND;TZID=Europe/Paris:20241024T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241024T130000
+            DTEND;TZID=Europe/Paris:20241024T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241031T100000
+            DTEND;TZID=Europe/Paris:20241031T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241031T130000
+            DTEND;TZID=Europe/Paris:20241031T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241107T100000
+            DTEND;TZID=Europe/Paris:20241107T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241107T130000
+            DTEND;TZID=Europe/Paris:20241107T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241114T100000
+            DTEND;TZID=Europe/Paris:20241114T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241114T130000
+            DTEND;TZID=Europe/Paris:20241114T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241121T100000
+            DTEND;TZID=Europe/Paris:20241121T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241121T130000
+            DTEND;TZID=Europe/Paris:20241121T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241128T100000
+            DTEND;TZID=Europe/Paris:20241128T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241128T130000
+            DTEND;TZID=Europe/Paris:20241128T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241205T100000
+            DTEND;TZID=Europe/Paris:20241205T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241205T130000
+            DTEND;TZID=Europe/Paris:20241205T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241212T100000
+            DTEND;TZID=Europe/Paris:20241212T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241212T130000
+            DTEND;TZID=Europe/Paris:20241212T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241219T100000
+            DTEND;TZID=Europe/Paris:20241219T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241219T130000
+            DTEND;TZID=Europe/Paris:20241219T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20241226T100000
+            DTEND;TZID=Europe/Paris:20241226T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20241226T130000
+            DTEND;TZID=Europe/Paris:20241226T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250102T100000
+            DTEND;TZID=Europe/Paris:20250102T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250102T130000
+            DTEND;TZID=Europe/Paris:20250102T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250109T100000
+            DTEND;TZID=Europe/Paris:20250109T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250109T130000
+            DTEND;TZID=Europe/Paris:20250109T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250116T100000
+            DTEND;TZID=Europe/Paris:20250116T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250116T130000
+            DTEND;TZID=Europe/Paris:20250116T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250123T100000
+            DTEND;TZID=Europe/Paris:20250123T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250123T130000
+            DTEND;TZID=Europe/Paris:20250123T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250130T100000
+            DTEND;TZID=Europe/Paris:20250130T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250130T130000
+            DTEND;TZID=Europe/Paris:20250130T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250206T100000
+            DTEND;TZID=Europe/Paris:20250206T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250206T130000
+            DTEND;TZID=Europe/Paris:20250206T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250213T100000
+            DTEND;TZID=Europe/Paris:20250213T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250213T130000
+            DTEND;TZID=Europe/Paris:20250213T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250220T100000
+            DTEND;TZID=Europe/Paris:20250220T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250220T130000
+            DTEND;TZID=Europe/Paris:20250220T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250227T100000
+            DTEND;TZID=Europe/Paris:20250227T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250227T130000
+            DTEND;TZID=Europe/Paris:20250227T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250306T100000
+            DTEND;TZID=Europe/Paris:20250306T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250306T130000
+            DTEND;TZID=Europe/Paris:20250306T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250313T100000
+            DTEND;TZID=Europe/Paris:20250313T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250313T130000
+            DTEND;TZID=Europe/Paris:20250313T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250320T100000
+            DTEND;TZID=Europe/Paris:20250320T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250320T130000
+            DTEND;TZID=Europe/Paris:20250320T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250327T100000
+            DTEND;TZID=Europe/Paris:20250327T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250327T130000
+            DTEND;TZID=Europe/Paris:20250327T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250403T100000
+            DTEND;TZID=Europe/Paris:20250403T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250403T130000
+            DTEND;TZID=Europe/Paris:20250403T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250410T100000
+            DTEND;TZID=Europe/Paris:20250410T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250410T130000
+            DTEND;TZID=Europe/Paris:20250410T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250417T100000
+            DTEND;TZID=Europe/Paris:20250417T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250417T130000
+            DTEND;TZID=Europe/Paris:20250417T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250424T100000
+            DTEND;TZID=Europe/Paris:20250424T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250424T130000
+            DTEND;TZID=Europe/Paris:20250424T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250501T100000
+            DTEND;TZID=Europe/Paris:20250501T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250501T130000
+            DTEND;TZID=Europe/Paris:20250501T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250508T100000
+            DTEND;TZID=Europe/Paris:20250508T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250508T130000
+            DTEND;TZID=Europe/Paris:20250508T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250515T100000
+            DTEND;TZID=Europe/Paris:20250515T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250515T130000
+            DTEND;TZID=Europe/Paris:20250515T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250522T100000
+            DTEND;TZID=Europe/Paris:20250522T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250522T130000
+            DTEND;TZID=Europe/Paris:20250522T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250529T100000
+            DTEND;TZID=Europe/Paris:20250529T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250529T130000
+            DTEND;TZID=Europe/Paris:20250529T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250605T100000
+            DTEND;TZID=Europe/Paris:20250605T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250605T130000
+            DTEND;TZID=Europe/Paris:20250605T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250612T100000
+            DTEND;TZID=Europe/Paris:20250612T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250612T130000
+            DTEND;TZID=Europe/Paris:20250612T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250619T100000
+            DTEND;TZID=Europe/Paris:20250619T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250619T130000
+            DTEND;TZID=Europe/Paris:20250619T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250626T100000
+            DTEND;TZID=Europe/Paris:20250626T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250626T130000
+            DTEND;TZID=Europe/Paris:20250626T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250703T100000
+            DTEND;TZID=Europe/Paris:20250703T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250703T130000
+            DTEND;TZID=Europe/Paris:20250703T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250710T100000
+            DTEND;TZID=Europe/Paris:20250710T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250710T130000
+            DTEND;TZID=Europe/Paris:20250710T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250717T100000
+            DTEND;TZID=Europe/Paris:20250717T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250717T130000
+            DTEND;TZID=Europe/Paris:20250717T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250724T100000
+            DTEND;TZID=Europe/Paris:20250724T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250724T130000
+            DTEND;TZID=Europe/Paris:20250724T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250731T100000
+            DTEND;TZID=Europe/Paris:20250731T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250731T130000
+            DTEND;TZID=Europe/Paris:20250731T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250807T100000
+            DTEND;TZID=Europe/Paris:20250807T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250807T130000
+            DTEND;TZID=Europe/Paris:20250807T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250814T100000
+            DTEND;TZID=Europe/Paris:20250814T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250814T130000
+            DTEND;TZID=Europe/Paris:20250814T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250821T100000
+            DTEND;TZID=Europe/Paris:20250821T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250821T130000
+            DTEND;TZID=Europe/Paris:20250821T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250828T100000
+            DTEND;TZID=Europe/Paris:20250828T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250828T130000
+            DTEND;TZID=Europe/Paris:20250828T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250904T100000
+            DTEND;TZID=Europe/Paris:20250904T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250904T130000
+            DTEND;TZID=Europe/Paris:20250904T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250911T100000
+            DTEND;TZID=Europe/Paris:20250911T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250911T130000
+            DTEND;TZID=Europe/Paris:20250911T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250918T100000
+            DTEND;TZID=Europe/Paris:20250918T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250918T130000
+            DTEND;TZID=Europe/Paris:20250918T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20250925T100000
+            DTEND;TZID=Europe/Paris:20250925T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20250925T130000
+            DTEND;TZID=Europe/Paris:20250925T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251002T100000
+            DTEND;TZID=Europe/Paris:20251002T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251002T130000
+            DTEND;TZID=Europe/Paris:20251002T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251009T100000
+            DTEND;TZID=Europe/Paris:20251009T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251009T130000
+            DTEND;TZID=Europe/Paris:20251009T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251016T100000
+            DTEND;TZID=Europe/Paris:20251016T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251016T130000
+            DTEND;TZID=Europe/Paris:20251016T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251023T100000
+            DTEND;TZID=Europe/Paris:20251023T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251023T130000
+            DTEND;TZID=Europe/Paris:20251023T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251030T100000
+            DTEND;TZID=Europe/Paris:20251030T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251030T130000
+            DTEND;TZID=Europe/Paris:20251030T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251106T100000
+            DTEND;TZID=Europe/Paris:20251106T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251106T130000
+            DTEND;TZID=Europe/Paris:20251106T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251113T100000
+            DTEND;TZID=Europe/Paris:20251113T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251113T130000
+            DTEND;TZID=Europe/Paris:20251113T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251120T100000
+            DTEND;TZID=Europe/Paris:20251120T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251120T130000
+            DTEND;TZID=Europe/Paris:20251120T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251127T100000
+            DTEND;TZID=Europe/Paris:20251127T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251127T130000
+            DTEND;TZID=Europe/Paris:20251127T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251204T100000
+            DTEND;TZID=Europe/Paris:20251204T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251204T130000
+            DTEND;TZID=Europe/Paris:20251204T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251211T100000
+            DTEND;TZID=Europe/Paris:20251211T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251211T130000
+            DTEND;TZID=Europe/Paris:20251211T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251218T100000
+            DTEND;TZID=Europe/Paris:20251218T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251218T130000
+            DTEND;TZID=Europe/Paris:20251218T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20251225T100000
+            DTEND;TZID=Europe/Paris:20251225T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20251225T130000
+            DTEND;TZID=Europe/Paris:20251225T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260101T100000
+            DTEND;TZID=Europe/Paris:20260101T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260101T130000
+            DTEND;TZID=Europe/Paris:20260101T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260108T100000
+            DTEND;TZID=Europe/Paris:20260108T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260108T130000
+            DTEND;TZID=Europe/Paris:20260108T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260115T100000
+            DTEND;TZID=Europe/Paris:20260115T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260115T130000
+            DTEND;TZID=Europe/Paris:20260115T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260122T100000
+            DTEND;TZID=Europe/Paris:20260122T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260122T130000
+            DTEND;TZID=Europe/Paris:20260122T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260129T100000
+            DTEND;TZID=Europe/Paris:20260129T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260129T130000
+            DTEND;TZID=Europe/Paris:20260129T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260205T100000
+            DTEND;TZID=Europe/Paris:20260205T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260205T130000
+            DTEND;TZID=Europe/Paris:20260205T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260212T100000
+            DTEND;TZID=Europe/Paris:20260212T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260212T130000
+            DTEND;TZID=Europe/Paris:20260212T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260219T100000
+            DTEND;TZID=Europe/Paris:20260219T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260219T130000
+            DTEND;TZID=Europe/Paris:20260219T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260226T100000
+            DTEND;TZID=Europe/Paris:20260226T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260226T130000
+            DTEND;TZID=Europe/Paris:20260226T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260305T100000
+            DTEND;TZID=Europe/Paris:20260305T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260305T130000
+            DTEND;TZID=Europe/Paris:20260305T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260312T100000
+            DTEND;TZID=Europe/Paris:20260312T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260312T130000
+            DTEND;TZID=Europe/Paris:20260312T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260319T100000
+            DTEND;TZID=Europe/Paris:20260319T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260319T130000
+            DTEND;TZID=Europe/Paris:20260319T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260326T100000
+            DTEND;TZID=Europe/Paris:20260326T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260326T130000
+            DTEND;TZID=Europe/Paris:20260326T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260402T100000
+            DTEND;TZID=Europe/Paris:20260402T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260402T130000
+            DTEND;TZID=Europe/Paris:20260402T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260409T100000
+            DTEND;TZID=Europe/Paris:20260409T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260409T130000
+            DTEND;TZID=Europe/Paris:20260409T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260416T100000
+            DTEND;TZID=Europe/Paris:20260416T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260416T130000
+            DTEND;TZID=Europe/Paris:20260416T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260423T100000
+            DTEND;TZID=Europe/Paris:20260423T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260423T130000
+            DTEND;TZID=Europe/Paris:20260423T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260430T100000
+            DTEND;TZID=Europe/Paris:20260430T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260430T130000
+            DTEND;TZID=Europe/Paris:20260430T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260507T100000
+            DTEND;TZID=Europe/Paris:20260507T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260507T130000
+            DTEND;TZID=Europe/Paris:20260507T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260514T100000
+            DTEND;TZID=Europe/Paris:20260514T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260514T130000
+            DTEND;TZID=Europe/Paris:20260514T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260521T100000
+            DTEND;TZID=Europe/Paris:20260521T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260521T130000
+            DTEND;TZID=Europe/Paris:20260521T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260528T100000
+            DTEND;TZID=Europe/Paris:20260528T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260528T130000
+            DTEND;TZID=Europe/Paris:20260528T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260604T100000
+            DTEND;TZID=Europe/Paris:20260604T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260604T130000
+            DTEND;TZID=Europe/Paris:20260604T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260611T100000
+            DTEND;TZID=Europe/Paris:20260611T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260611T130000
+            DTEND;TZID=Europe/Paris:20260611T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260618T100000
+            DTEND;TZID=Europe/Paris:20260618T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260618T130000
+            DTEND;TZID=Europe/Paris:20260618T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260625T100000
+            DTEND;TZID=Europe/Paris:20260625T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260625T130000
+            DTEND;TZID=Europe/Paris:20260625T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260702T100000
+            DTEND;TZID=Europe/Paris:20260702T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260702T130000
+            DTEND;TZID=Europe/Paris:20260702T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260709T100000
+            DTEND;TZID=Europe/Paris:20260709T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260709T130000
+            DTEND;TZID=Europe/Paris:20260709T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260716T100000
+            DTEND;TZID=Europe/Paris:20260716T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260716T130000
+            DTEND;TZID=Europe/Paris:20260716T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260723T100000
+            DTEND;TZID=Europe/Paris:20260723T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260723T130000
+            DTEND;TZID=Europe/Paris:20260723T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260730T100000
+            DTEND;TZID=Europe/Paris:20260730T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260730T130000
+            DTEND;TZID=Europe/Paris:20260730T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 C1 (F1)
+            DTSTART;TZID=Europe/Paris:20260806T100000
+            DTEND;TZID=Europe/Paris:20260806T120000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:P202
+            DESCRIPTION: Group F1
+            END:VEVENT
+BEGIN:VEVENT
+            SUMMARY:MC01 T1 (F2)
+            DTSTART;TZID=Europe/Paris:20260806T130000
+            DTEND;TZID=Europe/Paris:20260806T160000
+            RRULE:FREQ=WEEKLY;BYDAY=TH
+            LOCATION:EXT1
+            DESCRIPTION: Group F2
+            END:VEVENT
+      END:VCALENDAR
