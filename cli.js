@@ -110,6 +110,24 @@ cli
     logger.error("Date of beginning is after the date of end.");
     return;
   }
+
+   // Define the periods where no courses are available
+   const noCoursePeriods = [
+    { start: new Date('2024-10-22'), end: new Date('2024-11-03') }, // Toussaint
+    { start: new Date('2024-12-21'), end: new Date('2025-01-05') }, // Noël
+    { start: new Date('2025-02-15'), end: new Date('2025-03-01') }, // Hiver
+    { start: new Date('2025-04-12'), end: new Date('2025-04-26') }, // Printemps
+    { start: new Date('2025-01-24'), end: new Date('2025-02-01') }  // Intersemestre
+  ];
+
+  const isDateInNoCoursePeriod = (date) => {
+    return noCoursePeriods.some(period => date >= period.start && date <= period.end);
+  };
+
+  if (isDateInNoCoursePeriod(dateDebut) || isDateInNoCoursePeriod(dateFin)) {
+    logger.error("Les dates fournies se trouvent dans une période sans cours.");
+    return;
+  }
   
     const result = await service.genererICalendar(args.file, args.dateDebut, args.dateFin, args.cours);
 
