@@ -49,11 +49,13 @@ cli
   .argument("<file>", "The data file to search")
   .argument("<room>", "The text to look for in rooms' names")
   .action(async ({ args, options, logger }) => {
-    
+  
     const result = await service.capaciteSalle(args.file, args.room);
 
     if (typeof(result) === 'string') {
       logger.info(result.red);
+    } else if (Object.keys(result).length === 0) {
+      logger.info("Erreur: la salle n'existe pas".red);
     } else {
       logger.info("%s", JSON.stringify(result, null, 2));
     }

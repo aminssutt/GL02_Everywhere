@@ -29,16 +29,7 @@ class Service{
 
   }
 
-  /**
-   * check if the date is in the correct format
-   * @param {*} date  - date to be checked
-   * @returns  true if the date is in the correct format, false otherwise
-   */
-  async validateDate(date) {
-    const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\\d|3[0-1])$/;
-    return dateRegex.test(date);
-  }
-
+ 
   /**
    * @param {file}  - path of the .cru file
    * @param {cours}  - course to check rooms associated
@@ -59,6 +50,8 @@ class Service{
     }
   }
 
+  
+  
   /**
    * @param {file}  - path of the .cru file
    * @param {room}   - room being searched
@@ -442,7 +435,7 @@ class Service{
 
     return `${date.replace(/-/g, "")}T${time.replace(":", "")}00`;
   }
-    
+  
 
   convertWeekday(weekday) {
     const mapping = { L: "MO", MA: "TU", ME: "WE", J: "TH", V: "FR", S: "SA", D: "SU" };
