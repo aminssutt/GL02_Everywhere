@@ -93,14 +93,15 @@ cli
   }
     const result = await service.sallesDisponibles(args.file, args.slot);
 
-    if (typeof(result) === 'string') {
+    if (typeof result === 'string') {
       logger.info(result.red);
+    } else if (!result || (Array.isArray(result) && result.length === 0) || (typeof result === 'object' && Object.keys(result).length === 0)) {
+      // Si aucune salle n'est disponible
+      console.log("There is no room available at this period of time");
     } else {
-      logger.info("%s", JSON.stringify(result, null, 2));
-      console.log('There is no room available at this period of time')
-    }
-
-  })
+      // Si des salles sont disponibles
+      logger.info("%s", JSON.stringify(result, null, 2));}
+  } )
 
   // SPEC_5 export iCalendar
   .command("generer-icalendar", "Generate iCalendar file for a period")
