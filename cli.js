@@ -97,6 +97,7 @@ cli
       logger.info(result.red);
     } else {
       logger.info("%s", JSON.stringify(result, null, 2));
+      console.log('There is no room available at this period of time')
     }
 
   })
