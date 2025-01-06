@@ -6,9 +6,8 @@ const vegalite = require("vega-lite");
 const { error } = require("console");
 const { start } = require("repl");
 
-class Service{
-
-  constructor(){
+class Service {
+  constructor() {
     this.parser = new Parser();
   }
 
@@ -16,19 +15,16 @@ class Service{
    * receive a .CRU file and check its sintax
    * @param {file} - string path to a CRU file
    */
-  async check(file){
-
+  async check(file) {
     const data = await fs.readFile(file, "utf8");
     const jsonData = this.parser.parse(data);
 
-    if (typeof(jsonData) === 'object') {
+    if (typeof jsonData === "object") {
       return jsonData;
     } else {
       return "The .cru file contains error";
     }
-
   }
-
 
   /**
    * @param {file}  - path of the .cru file
@@ -36,11 +32,11 @@ class Service{
    * @returns returns an array with json objects of filtered info os courses' rooms
    * { nom_salle: '', capacite: '', batiment: '' }
    */
-  async rechercheSalle(file, cours){
+  async rechercheSalle(file, cours) {
     const data = await fs.readFile(file, "utf8");
     const jsonData = this.parser.parse(data);
 
-    if (typeof(jsonData) === 'object') {
+    if (typeof jsonData === "object") {
       let n = new RegExp(cours);
       let info = this.searchRoomByCourse(jsonData, n);
 
@@ -50,22 +46,22 @@ class Service{
     }
   }
 
-
-
   /**
    * @param {file}  - path of the .cru file
    * @param {room}   - room being searched
    * @returns an json object with filtered information about the room
    *  { nom_salle, capacite }
    */
-  async capaciteSalle(file, room){
+  async capaciteSalle(file, room) {
     const data = await fs.readFile(file, "utf8");
     const jsonData = this.parser.parse(data);
 
-    if (typeof(jsonData) === 'object') {
-      let result = {}
+    if (typeof jsonData === "object") {
+      let result = {};
       let n = new RegExp(room);
-      let filtered = jsonData.flatMap((p) => p.classes).find((item) => item.room.match(n));
+      let filtered = jsonData
+        .flatMap((p) => p.classes)
+        .find((item) => item.room.match(n));
 
       if (filtered) {
         result = {
@@ -86,11 +82,11 @@ class Service{
    * @returns a json object with timeslots of the room available at each day of the week
    *  { L: ["08:00-12:00"], MA: ["09:00-11:00", "14:00-16:00"] ... }
    */
-  async disponibiliteSalle(file, room){
+  async disponibiliteSalle(file, room) {
     const data = await fs.readFile(file, "utf8");
     const jsonData = this.parser.parse(data);
 
-    if (typeof(jsonData) === 'object') {
+    if (typeof jsonData === "object") {
       var n = new RegExp(room);
       return this.availability(jsonData, n);
     } else {
@@ -104,17 +100,19 @@ class Service{
    * @returns a json object with a list of rooms available for every day of the week
    * { L: [ { nom_salle 'P202', capacite: 24, batiment: P } ... ], ... }
    */
-  async sallesDisponibles(file, slot){
+  async sallesDisponibles(file, slot) {
     const data = await fs.readFile(file, "utf8");
     const jsonData = this.parser.parse(data);
 
-    if (typeof(jsonData) === 'object') {
+    if (typeof jsonData === "object") {
       var startSlot = slot.substring(0, 5);
       var endSlot = slot.substring(6, 11);
       var roomsAvaliable = [];
 
       // all rooms names without duplicates
-      var allRooms = new Set(jsonData.flatMap((item) => item.classes).map((item) => item.room));
+      var allRooms = new Set(
+        jsonData.flatMap((item) => item.classes).map((item) => item.room),
+      );
       allRooms = [...allRooms];
 
       allRooms.forEach((room) => {
@@ -124,9 +122,15 @@ class Service{
         for (let key in avb) {
           for (let index in avb[key]) {
             let str = avb[key][index];
-            if (str.substring(0, 5) <= startSlot && str.substring(6, 11) >= endSlot) {
+            if (
+              str.substring(0, 5) <= startSlot &&
+              str.substring(6, 11) >= endSlot
+            ) {
               // if available, put in a response all desired data in json format
-              roomsAvaliable.push({jour: key, salle: this.searchRoomByName(jsonData, room)})
+              roomsAvaliable.push({
+                jour: key,
+                salle: this.searchRoomByName(jsonData, room),
+              });
             }
           }
         }
@@ -143,7 +147,6 @@ class Service{
     } else {
       return "The .cru file contains error";
     }
-
   }
 
   /**
@@ -153,11 +156,11 @@ class Service{
    * @param {cours}  - course with the info being exported
    * @returns returns a json object with sucessful message and creates an .ics file in the same relative path
    */
-  async genererICalendar(file, dateDebut, dateFin, cours){
+  async genererICalendar(file, dateDebut, dateFin, cours) {
     const data = await fs.readFile(file, "utf8");
     const jsonData = this.parser.parse(data);
 
-    if (typeof(jsonData) === 'object') {
+    if (typeof jsonData === "object") {
       const dates = this.getDatesBetween(dateDebut, dateFin);
       const courseData = jsonData.find((item) => item.course === cours);
 
@@ -172,7 +175,7 @@ class Service{
       dates.forEach((date) => {
         classes.forEach((cls) => {
           // Create event for each booked class
-          if (this.checkWeekday(date, cls.weekday)){
+          if (this.checkWeekday(date, cls.weekday)) {
             const event = `BEGIN:VEVENT
             SUMMARY:${cours} ${cls.type} (${cls.subGroup})
             DTSTART;TZID=Europe/Paris:${this.formatDateTime(date, cls.startTime)}
@@ -184,7 +187,7 @@ class Service{
             icalData.push(event);
           }
         });
-      })
+      });
 
       // iCalendar file header
       const icalContent = `BEGIN:VCALENDAR
@@ -203,28 +206,30 @@ class Service{
         console.log(`iCalendar file generated: ${outputFileName}`);
       });
 
-      return {message: "File created sucessfully"};
+      return { message: "File created sucessfully" };
     } else {
       return "The .cru file contains error";
     }
-    }
+  }
 
   /**
    * @param {file}  - path of the .cru file
    * @returns returns a json object with sucessful message and creates a .svg file with the chart of the occupancy rate
    */
-  async tauxOccupation(file){
+  async tauxOccupation(file) {
     const data = await fs.readFile(file, "utf8");
     var jsonData = this.parser.parse(data);
 
-    if (typeof(jsonData) === 'object') {
-      var allRooms = new Set(jsonData.flatMap((item) => item.classes).map((item) => item.room));
+    if (typeof jsonData === "object") {
+      var allRooms = new Set(
+        jsonData.flatMap((item) => item.classes).map((item) => item.room),
+      );
       allRooms = [...allRooms];
       var chartData = [];
 
       allRooms.forEach((item) => {
-        chartData.push(this.occupationRate(jsonData, item))
-      })
+        chartData.push(this.occupationRate(jsonData, item));
+      });
 
       var pieChart = {
         data: {
@@ -258,7 +263,7 @@ class Service{
         // console.log("Pie chart output : ./pie_chart.svg");
       });
 
-      return {message: "Chart generated successfully"}
+      return { message: "Chart generated successfully" };
     } else {
       return "The .cru file contains error";
     }
@@ -270,20 +275,24 @@ class Service{
    * @returns a json array with objects filtering rooms info
    *  { nom_salle: 'P201', capacite: 24 }
    */
-  async classementSalles(file, ordre){
+  async classementSalles(file, ordre) {
     const data = await fs.readFile(file, "utf8");
     var jsonData = this.parser.parse(data);
 
-    if (typeof(jsonData) === 'object') {
+    if (typeof jsonData === "object") {
       var allRooms = Array.from(
-        new Set(jsonData
-          .flatMap((item) => item.classes)
-          .map((item) => JSON.stringify({ nom_salle: item.room, capacite: item.capacity })))
+        new Set(
+          jsonData
+            .flatMap((item) => item.classes)
+            .map((item) =>
+              JSON.stringify({ nom_salle: item.room, capacite: item.capacity }),
+            ),
+        ),
       ).map((item) => JSON.parse(item));
 
-      if (ordre.includes("des")){
+      if (ordre.includes("des")) {
         allRooms = allRooms.sort((a, b) => b.capacite - a.capacite);
-      }else{
+      } else {
         allRooms = allRooms.sort((a, b) => a.capacite - b.capacite);
       }
 
@@ -313,16 +322,18 @@ class Service{
   }
 
   searchRoomByName(data, roomName) {
-    var filtered = data.flatMap((p) => p.classes.filter(item => item.room === roomName));
+    var filtered = data.flatMap((p) =>
+      p.classes.filter((item) => item.room === roomName),
+    );
 
     if (filtered.length === 0) {
       return {};
     } else {
       var info = {
-          nom_salle: filtered[0].room,
-          capacite: filtered[0].capacity,
-          batiment: filtered[0].room.charAt(0),
-        };
+        nom_salle: filtered[0].room,
+        capacite: filtered[0].capacity,
+        batiment: filtered[0].room.charAt(0),
+      };
 
       return info;
     }
@@ -332,6 +343,9 @@ class Service{
     var filtered = data
       .flatMap((p) => p.classes)
       .filter((p) => p.room.match(n, "i"));
+    if (filtered.length === 0) {
+      return "Erreur: la salle n'existe pas";
+    }
     var days = ["L", "MA", "ME", "J", "V", "S", "D"];
     var result = {};
 
@@ -376,23 +390,26 @@ class Service{
     return result;
   }
 
-  occupationRate(data, roomName){
-    var filtered = data.flatMap((p) => p.classes.filter(item => item.room === roomName));
+  occupationRate(data, roomName) {
+    var filtered = data.flatMap((p) =>
+      p.classes.filter((item) => item.room === roomName),
+    );
     var diff = 0;
 
     filtered.forEach((item) => {
-      let startHoursAsNumber = Number(item.startTime.substring(0,2));
-      let startMinutesAsNumber = Number(item.startTime.substring(3,5));
-      let endHoursAsNumber = Number(item.endTime.substring(0,2));
-      let endMinutesAsNumber = Number(item.endTime.substring(3,5));
+      let startHoursAsNumber = Number(item.startTime.substring(0, 2));
+      let startMinutesAsNumber = Number(item.startTime.substring(3, 5));
+      let endHoursAsNumber = Number(item.endTime.substring(0, 2));
+      let endMinutesAsNumber = Number(item.endTime.substring(3, 5));
 
-      diff += (endHoursAsNumber - startHoursAsNumber) + ((endMinutesAsNumber - startMinutesAsNumber)/60);
+      diff +=
+        endHoursAsNumber -
+        startHoursAsNumber +
+        (endMinutesAsNumber - startMinutesAsNumber) / 60;
+    });
 
-    })
-
-    var info = {nom_salle: roomName, occupation: diff}
+    var info = { nom_salle: roomName, occupation: diff };
     return info;
-
   }
 
   getDatesBetween(startDate, endDate) {
@@ -418,7 +435,7 @@ class Service{
       J: 4,
       V: 5,
       S: 6,
-      D: 0
+      D: 0,
     };
 
     const parsedDate = new Date(date);
@@ -426,7 +443,6 @@ class Service{
 
     return dayOfWeek === daysMapping[expectedDay];
   }
-
 
   formatDateTime(date, time) {
     if (!date || !time) {
@@ -436,9 +452,16 @@ class Service{
     return `${date.replace(/-/g, "")}T${time.replace(":", "")}00`;
   }
 
-
   convertWeekday(weekday) {
-    const mapping = { L: "MO", MA: "TU", ME: "WE", J: "TH", V: "FR", S: "SA", D: "SU" };
+    const mapping = {
+      L: "MO",
+      MA: "TU",
+      ME: "WE",
+      J: "TH",
+      V: "FR",
+      S: "SA",
+      D: "SU",
+    };
     return mapping[weekday] || weekday;
   }
 }
