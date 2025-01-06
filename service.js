@@ -1,4 +1,4 @@
-const fs = require("fs/promises"); 
+const fs = require("fs/promises");
 const colors = require("colors");
 const Parser = require("./parser.js");
 const vg = require("vega");
@@ -9,7 +9,7 @@ const { start } = require("repl");
 class Service{
 
   constructor(){
-    this.parser = new Parser();    
+    this.parser = new Parser();
   }
 
   /**
@@ -17,7 +17,7 @@ class Service{
    * @param {file} - string path to a CRU file
    */
   async check(file){
-    
+
     const data = await fs.readFile(file, "utf8");
     const jsonData = this.parser.parse(data);
 
@@ -29,12 +29,12 @@ class Service{
 
   }
 
- 
+
   /**
    * @param {file}  - path of the .cru file
    * @param {cours}  - course to check rooms associated
    * @returns returns an array with json objects of filtered info os courses' rooms
-   * { nom_salle: '', capacite: '', batiment: '' }  
+   * { nom_salle: '', capacite: '', batiment: '' }
    */
   async rechercheSalle(file, cours){
     const data = await fs.readFile(file, "utf8");
@@ -50,13 +50,13 @@ class Service{
     }
   }
 
-  
-  
+
+
   /**
    * @param {file}  - path of the .cru file
    * @param {room}   - room being searched
    * @returns an json object with filtered information about the room
-   *  { nom_salle, capacite } 
+   *  { nom_salle, capacite }
    */
   async capaciteSalle(file, room){
     const data = await fs.readFile(file, "utf8");
@@ -107,7 +107,7 @@ class Service{
   async sallesDisponibles(file, slot){
     const data = await fs.readFile(file, "utf8");
     const jsonData = this.parser.parse(data);
-    
+
     if (typeof(jsonData) === 'object') {
       var startSlot = slot.substring(0, 5);
       var endSlot = slot.substring(6, 11);
@@ -131,7 +131,7 @@ class Service{
           }
         }
       });
-      
+
       // format to delete duplicates
       roomsAvaliable = roomsAvaliable.reduce((acc, { jour, salle }) => {
         if (!acc[jour]) acc[jour] = [];
@@ -192,7 +192,7 @@ class Service{
       PRODID:
       ${icalData.join("\n")}
       END:VCALENDAR`;
-      
+
       // create file
       const outputFileName = `calendar.ics`;
       fs.writeFile(outputFileName, icalContent, (writeErr) => {
@@ -216,7 +216,7 @@ class Service{
   async tauxOccupation(file){
     const data = await fs.readFile(file, "utf8");
     var jsonData = this.parser.parse(data);
-      
+
     if (typeof(jsonData) === 'object') {
       var allRooms = new Set(jsonData.flatMap((item) => item.classes).map((item) => item.room));
       allRooms = [...allRooms];
@@ -245,7 +245,7 @@ class Service{
           },
         },
       };
-      
+
       const chart = vegalite.compile(pieChart).spec;
       /* SVG version */
       var runtime = vg.parse(chart);
@@ -296,7 +296,7 @@ class Service{
   searchRoomByCourse(data, courseName) {
     var filtered = data.filter((p) => p.course.match(courseName, "i"));
     if (filtered.length === 0) {
-      return [];
+      return "No course available with this name";
     } else {
       var info = filtered[0].classes.map((item) => {
         let f = {
@@ -378,16 +378,16 @@ class Service{
 
   occupationRate(data, roomName){
     var filtered = data.flatMap((p) => p.classes.filter(item => item.room === roomName));
-    var diff = 0; 
+    var diff = 0;
 
     filtered.forEach((item) => {
       let startHoursAsNumber = Number(item.startTime.substring(0,2));
       let startMinutesAsNumber = Number(item.startTime.substring(3,5));
       let endHoursAsNumber = Number(item.endTime.substring(0,2));
       let endMinutesAsNumber = Number(item.endTime.substring(3,5));
-      
+
       diff += (endHoursAsNumber - startHoursAsNumber) + ((endMinutesAsNumber - startMinutesAsNumber)/60);
-        
+
     })
 
     var info = {nom_salle: roomName, occupation: diff}
@@ -435,7 +435,7 @@ class Service{
 
     return `${date.replace(/-/g, "")}T${time.replace(":", "")}00`;
   }
-  
+
 
   convertWeekday(weekday) {
     const mapping = { L: "MO", MA: "TU", ME: "WE", J: "TH", V: "FR", S: "SA", D: "SU" };
@@ -443,4 +443,4 @@ class Service{
   }
 }
 
-module.exports = Service; 
+module.exports = Service;
