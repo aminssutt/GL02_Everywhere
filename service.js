@@ -285,14 +285,14 @@ class Service {
             .flatMap((item) => item.classes)
             .map((item) => JSON.stringify({
                 nom_salle: item.room,
-                capacite: item.capacity || "unknown" // Si jamais ça n'a pas été défini
+                capacite: item.capacity
             }))
         )
-      ).map((item) => JSON.parse(item))
-      .sort((a, b) => {
+    ).map((item) => JSON.parse(item))
+    .sort((a, b) => {
         // Gestion des cas où la capacité est "unknown"
-        if (a.capacite === "unknown" || a.capacite === null) return 1;
-        if (b.capacite === "unknown" || b.capacite === null) return -1;
+        if (a.capacite === "unknown") return 1;
+        if (b.capacite === "unknown") return -1;
     
         // Comparaison classique pour les valeurs numériques
         return parseInt(a.capacite) - parseInt(b.capacite);
