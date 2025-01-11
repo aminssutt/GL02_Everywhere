@@ -281,6 +281,24 @@ class Service {
 
     if (typeof jsonData === "object") {
       var allRooms = Array.from(
+        new Set(jsonData
+            .flatMap((item) => item.classes)
+            .map((item) => JSON.stringify({
+                nom_salle: item.room,
+                capacite: item.capacity || "unknown" // Si jamais ça n'a pas été défini
+            }))
+        )
+      ).map((item) => JSON.parse(item))
+      .sort((a, b) => {
+        // Gestion des cas où la capacité est "unknown"
+        if (a.capacite === "unknown" || a.capacite === null) return 1;
+        if (b.capacite === "unknown" || b.capacite === null) return -1;
+    
+        // Comparaison classique pour les valeurs numériques
+        return parseInt(a.capacite) - parseInt(b.capacite);
+    });
+
+      /*old version = var allRooms = Array.from(
         new Set(
           jsonData
             .flatMap((item) => item.classes)
@@ -288,7 +306,7 @@ class Service {
               JSON.stringify({ nom_salle: item.room, capacite: item.capacity }),
             ),
         ),
-      ).map((item) => JSON.parse(item));
+      ).map((item) => JSON.parse(item));*/
 
       if (ordre.includes("des")) {
         allRooms = allRooms.sort((a, b) => b.capacite - a.capacite);

@@ -130,7 +130,46 @@ class Parser{
      * @param {string} data 
      * @returns data(string) but without useless lines
      */
-    deleteComment(data){
+    deleteComment(data) {
+        data = data.trim();
+        let dataArray = data.split('\r\n');
+        let buffer = [];
+        let formatted = [];
+    
+        for (let i = 0; i <= dataArray.length; i++) {
+            if (dataArray[i] && dataArray[i][0] === "+") {
+                let j = i + 1;
+                this.regex.lastIndex = 0;
+    
+                while (dataArray[j] && (this.regexClasses.test(dataArray[j]) || dataArray[j].includes(','))) {
+                    if (!this.regexClasses.test(dataArray[j])) {
+                        let elements = dataArray[j].split(',');
+                        if (!elements[2] || !elements[2].startsWith("P=")) {
+                            elements.splice(2, 0, "P=unknown");
+                        }
+                        dataArray[j] = elements.join(',');
+                    }
+                    buffer.push(dataArray[j]);
+                    this.regexClasses.lastIndex = 0;
+                    j++;
+                }
+    
+                if (buffer.length > 0) {
+                    formatted.push(dataArray[i]);
+                    for (let index in buffer) {
+                        formatted.push(buffer[index]);
+                    }
+                    buffer = [];
+                }
+            }
+        }
+        formatted = formatted.join('\r\n');
+        return formatted;
+    }
+    
+
+
+    /*old version = deleteComment(data){
         data = data.trim();
         let dataArray = data.split('\r\n');
         let buffer = [];
@@ -158,6 +197,6 @@ class Parser{
         }
         formatted = formatted.join('\r\n');
         return formatted
-    }
+    }*/
 }
 module.exports = Parser;
